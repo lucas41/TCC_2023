@@ -23,4 +23,15 @@ class LoginController extends Controller
         return view('main/registro');
 
     }
+
+    public function recupera(){
+
+        return view('main/RecuperaSenha');
+        
+    }
+
+    public function alterar(){
+
+        return view('main/RecuperaSenha');
+    }
 }
