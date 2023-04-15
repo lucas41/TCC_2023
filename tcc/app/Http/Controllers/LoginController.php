@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\users;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -18,9 +20,38 @@ class LoginController extends Controller
 
     }
 
+    public function efetuarlogin(Request $Request){
+
+        $email = $Request->input('email');
+        $senha = $Request->input('senha');
+
+        $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
+        
+        if (!empty($results)) {
+            echo("achou dados");
+            exit;
+        } else {
+            $Request->session()->flash('danger', 'Usuario ou senha incorreta');
+            return redirect()->route('login');
+        }
+
+    }
+
     public function registro(){
 
         return view('main/registro');
+
+    }
+
+    public function cadastro(Request $Request){
+        $post = new users();
+        $post->nome = $Request->input('nome');
+        $post->sobrenome = $Request->input('sobrenome');
+        $post->email = $Request->input('email');
+        $post->senha = $Request->input('password');
+        $post->save();
+        $Request->session()->flash('success', 'Registro criado com sucesso.');
+        return redirect()->route('login');
 
     }
 
@@ -34,4 +65,6 @@ class LoginController extends Controller
 
         return view('main/RecuperaSenha');
     }
+
+
 }

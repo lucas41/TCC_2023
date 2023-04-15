@@ -15,7 +15,7 @@
 </head>
 <body>
     <!-- Criando Container-->
-    <section class="container forms">
+    <section class="global forms">
         <div class="form login">
             <div class="form-content">
                 <header>Alterar Senha</header>

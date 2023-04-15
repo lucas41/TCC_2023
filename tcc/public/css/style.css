@@ -10,7 +10,7 @@
 }
 
 /* Ajustes da classe container */
-.container{
+.global{
     height: 100vh;
     width: 100%;
     display: flex;
@@ -102,3 +102,36 @@ form .field{
 .form a:hover{
     text-decoration: underline;
 }
+
+.flash-message {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.flash-message-erro {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #FF0000;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+

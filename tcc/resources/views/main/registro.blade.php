@@ -15,32 +15,33 @@
 </head>
 <body>
     <!-- Criando Container-->
-    <section class="container forms">
+    <section class="global forms">
         <div class="form login">
             <div class="form-content">
                 <header>Cadastro</header>
                 
                 <!-- Form -->
-                <form action="#">
+                <form method="post">
+                    @csrf
                     <div class="field input-field">
-                        <input type="text" class="input" placeholder="Nome">
+                        <input type="text" class="input" name="nome" placeholder="Nome">
                     </div>
 
                     <div class="field input-field">
-                        <input type="text" class="input" placeholder="Sobrenome">
+                        <input type="text" class="input" name="sobrenome" placeholder="Sobrenome">
                     </div>
 
                     <div class="field input-field">
-                        <input type="email" class="input" placeholder="Email">
+                        <input type="email" class="input" name="email" placeholder="Email">
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password">
+                        <input type="password" placeholder="Password" name="password" class="password">
                         <i class="bx bx-hide eye-icon"></i>
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password">
+                        <input type="password" placeholder="Password" name="password" class="password">
                         <i class="bx bx-hide eye-icon"></i>
                     </div>
 
