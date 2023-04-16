@@ -72,13 +72,12 @@ class LoginController extends Controller
 
     public function home(){
 
-        if (session()->has('nome')) {
-            return view('main/home');
-        } else {
-            return redirect()->route('login');
-        }
-        
+ 
+        return view('main/home');
+
     }
+        
+    
 
 
 }

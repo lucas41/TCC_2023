@@ -18,7 +18,7 @@ Route::get('/altera', 'LoginController@alterar')->name('altera');
 
 Route::group(['prefix' => 'aplicacao'], function () {
 
-    Route::get('/home', 'LoginController@home')->name('home');
+    Route::get('/home', 'LoginController@home')->name('home')->middleware('checksession');
 
 });
 
