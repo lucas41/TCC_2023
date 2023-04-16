@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
+
     public function index (){
 
         return view('main/index');
@@ -26,10 +27,13 @@ class LoginController extends Controller
         $senha = $Request->input('senha');
 
         $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
-        
+
+        $nome = $results[0]->nome;
+
         if (!empty($results)) {
-            echo("achou dados");
-            exit;
+            session(['nome' => $nome]);
+            return redirect()->route('home');
+
         } else {
             $Request->session()->flash('danger', 'Usuario ou senha incorreta');
             return redirect()->route('login');
@@ -64,6 +68,16 @@ class LoginController extends Controller
     public function alterar(){
 
         return view('main/RecuperaSenha');
+    }
+
+    public function home(){
+
+        if (session()->has('nome')) {
+            return view('main/home');
+        } else {
+            return redirect()->route('login');
+        }
+        
     }
 
 

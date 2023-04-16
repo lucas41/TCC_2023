@@ -15,3 +15,15 @@ Route::get('/recupera', 'LoginController@recupera')->name('recuperacao');
 Route::get('/altera', 'LoginController@alterar')->name('altera');
 
 });
+
+Route::group(['prefix' => 'aplicacao'], function () {
+
+    Route::get('/home', 'LoginController@home')->name('home');
+
+});
+
+
+Route::get('/logout', function () {
+    session()->flush(); // remove todas as variáveis da sessão
+    return redirect()->route('login'); // envia de volta para o login
+});
