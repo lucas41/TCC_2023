@@ -28,9 +28,10 @@ class LoginController extends Controller
 
         $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
 
-        $nome = $results[0]->nome;
+        
 
         if (!empty($results)) {
+            $nome = $results[0]->nome;
             session(['nome' => $nome]);
             return redirect()->route('home');
 
