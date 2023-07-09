@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\DB;
+use App\Mail\BoasvindasEmail;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -56,6 +58,7 @@ class LoginController extends Controller
         $post->senha = $Request->input('password');
         $post->save();
         $Request->session()->flash('success', 'Registro criado com sucesso.');
+        Mail::to($post->email)->send(new BoasvindasEmail());
         return redirect()->route('login');
 
     }
