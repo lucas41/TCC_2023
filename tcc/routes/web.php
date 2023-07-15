@@ -12,6 +12,7 @@ Route::post('/login', 'LoginController@efetuarlogin')->name('efetuarlogin');
 Route::get('/registro', 'LoginController@registro')->name('registro');
 Route::post('/registro', 'LoginController@cadastro')->name('cadastro');
 Route::get('/recupera', 'LoginController@recupera')->name('recuperacao');
+Route::post('/recupera', 'LoginController@recuperasenha')->name('recuperaçãosenha');
 Route::get('/altera', 'LoginController@alterar')->name('altera');
 
 });

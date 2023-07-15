@@ -21,9 +21,10 @@
                 <header>Esqueci minha senha</header>
                 
                 <!-- Form -->
-                <form action="#">
+                <form method="POST">
+                    @csrf
                     <div class="field input-field">
-                        <input type="email" class="input" placeholder="Email">
+                        <input type="email" name="email" class="input" placeholder="Email">
                     </div>
 
                     <div class="field button-field">

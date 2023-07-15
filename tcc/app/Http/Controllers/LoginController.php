@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\DB;
 use App\Mail\BoasvindasEmail;
+use App\Mail\CodigoReset;
 use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
@@ -69,9 +70,36 @@ class LoginController extends Controller
         
     }
 
+    public function recuperasenha(Request $Request){
+
+        $email = $Request->input('email');
+        $results = DB::select('select * from users where email = ?', [$email]);
+
+        if (!empty($results)) {
+            $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            $tamanho = 6; // Define o tamanho do conjunto de caracteres aleatórios
+            $conjuntoAleatorio = substr(str_shuffle($caracteres), 0, $tamanho);
+
+            $user = users::where('email', $email)->first();
+            $user->reset_code = $conjuntoAleatorio;
+            $user->save();
+
+            Mail::to($email)->send(new CodigoReset($conjuntoAleatorio));
+            }
+
+
+
+        else{
+
+            $Request->session()->flash('danger', 'Usuario não encontrado');
+            return redirect()->route('login');
+
+        }
+    }
+
     public function alterar(){
 
-        return view('main/RecuperaSenha');
+        return view('main/alteraSenha');
     }
 
     public function home(){

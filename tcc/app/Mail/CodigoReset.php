@@ -9,8 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class BoasvindasEmail extends Mailable
-
+class CodigoReset extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,9 +19,9 @@ class BoasvindasEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($conjuntoAleatorio)
     {
-       
+        $this->conjuntoAleatorio = $conjuntoAleatorio;
     }
 
     /**
@@ -32,8 +31,7 @@ class BoasvindasEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Email de boas vindas')
-                    ->view('emails.Boasvinda');
+        return $this->subject('Email de Reset password')
+                     ->view('emails.Resetcode')->with(['conjuntoAleatorio' => $this->conjuntoAleatorio]);
     }
-
 }
