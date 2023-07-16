@@ -8,10 +8,12 @@
     <title>Esqueci minha senha</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_recupera.css') }}">
+
 
     <!-- box -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -40,32 +42,29 @@
     @endif
     <!-- termino da verificação se existe mensagem na sessão -->
 
-    <!-- Criando Container-->
-    <section class="global forms">
-        <div class="form login">
-            <div class="form-content">
-                <header>Esqueci minha senha</header>
-
-                <!-- Form -->
-                <form method="POST">
-                    @csrf
-                    <div class="field input-field">
-                        <input type="email" name="email" class="input" placeholder="Email">
-                    </div>
-
-                    <div class="field button-field">
-                        <button>Recuperar conta</button>
-                    </div>
-
-                    <div class="form-link">
-                        <span>Já tem uma conta?</span> <a href="{{ route('login') }}" class="singup-link">Entre
-                            aqui!</a>
-                    </div>
-
-                </form>
-            </div>
+    <div class="container">
+        <div class="icone">
+            <img src="{{ asset('img/cadeado.png') }}">
         </div>
-    </section>
+        <center><h4 >Validação de dois fatores</h4></center>
+        <form action="" method="post">
+            <div class="inputValues">
+                <input type="text">
+                <input type="text" disabled>
+                <input type="text" disabled>
+                <input type="text" disabled>
+                <input type="text" disabled>
+                <input type="text" disabled>
+            </div>
+            <button>
+                Validar codigo
+            </button>
+        </form>
+    </div>
+
+
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

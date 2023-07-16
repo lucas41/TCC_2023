@@ -1,0 +1,139 @@
+/* Importando fonts do Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #4070f4, #4070f4);
+}
+
+.container {
+    width: 500px;
+    height: min-content;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.container .icone {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4070f4;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.container .icone img {
+    width: 60px;
+    height: 60px;
+}
+
+.container h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .04rem;
+    color: #121212
+}
+
+.container form .container form .inputValues {
+    width: 100%;
+}
+
+.container form .inputValues {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container form input{
+    width: 55px;
+    height: 55px;
+    margin: 0 8px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 3px;
+    color: transparent;
+    background: #f0f0f0;
+    text-shadow: 0 0 0 #040305;
+    transition: 1.s ease-in-out;
+    border: none;
+}
+
+.container form input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.container form input:focus {
+    outline: 2´px solid #4135d6;
+    outline-offset: 3px;
+}
+
+.container form button {
+    cursor: pointer;
+    pointer-events: none;
+    color: #fff;
+    background: #4135d6;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: .04rem;
+    border-radius: 8px;
+    border: none;
+    opacity: .8;
+    transition: .3s;
+}
+
+.container form button:hover {
+    background: #4035d6;
+}
+
+.container form button.activate {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.flash-message {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+
+.flash-message-erro {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #FF0000;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+}
+

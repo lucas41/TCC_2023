@@ -14,8 +14,10 @@ Route::post('/registro', 'LoginController@cadastro')->name('cadastro');
 Route::get('/recupera', 'LoginController@recupera')->name('recuperacao');
 Route::post('/recupera', 'LoginController@recuperasenha')->name('recuperaçãosenha');
 Route::get('/altera', 'LoginController@alterar')->name('altera');
+Route::get('/verirficacodigo', 'LoginController@verirficacodigo')->name('verirficacodigo');
 
 });
+
 
 Route::group(['prefix' => 'aplicacao'], function () {
 

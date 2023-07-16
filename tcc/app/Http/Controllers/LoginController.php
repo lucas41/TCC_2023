@@ -11,27 +11,35 @@ use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
+    private function gerarConjuntoAleatorio($tamanho)
+    {
+        $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        return substr(str_shuffle($caracteres), 0, $tamanho);
+    }
 
-    public function index (){
+    public function index()
+    {
 
         return view('main/index');
 
     }
 
-    public function login(){
+    public function login()
+    {
 
         return view('main/login');
 
     }
 
-    public function efetuarlogin(Request $Request){
+    public function efetuarlogin(Request $Request)
+    {
 
         $email = $Request->input('email');
         $senha = $Request->input('senha');
 
         $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
 
-        
+
 
         if (!empty($results)) {
             $nome = $results[0]->nome;
@@ -45,13 +53,15 @@ class LoginController extends Controller
 
     }
 
-    public function registro(){
+    public function registro()
+    {
 
         return view('main/registro');
 
     }
 
-    public function cadastro(Request $Request){
+    public function cadastro(Request $Request)
+    {
         $post = new users();
         $post->nome = $Request->input('nome');
         $post->sobrenome = $Request->input('sobrenome');
@@ -59,57 +69,62 @@ class LoginController extends Controller
         $post->senha = $Request->input('password');
         $post->save();
         $Request->session()->flash('success', 'Registro criado com sucesso.');
+        try {
         Mail::to($post->email)->send(new BoasvindasEmail());
+        }catch (\Exception $e) {
+            return redirect()->back()->with('danger', 'Não foi possível enviar o e-mail de Boas vindas.');
+        }
         return redirect()->route('login');
 
     }
 
-    public function recupera(){
+    public function recupera()
+    {
 
         return view('main/RecuperaSenha');
-        
+
     }
 
-    public function recuperasenha(Request $Request){
-
+    public function recuperasenha(Request $Request)
+    {
         $email = $Request->input('email');
-        $results = DB::select('select * from users where email = ?', [$email]);
+        $user = users::where('email', $email)->first();
 
-        if (!empty($results)) {
-            $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            $tamanho = 6; // Define o tamanho do conjunto de caracteres aleatórios
-            $conjuntoAleatorio = substr(str_shuffle($caracteres), 0, $tamanho);
-
-            $user = users::where('email', $email)->first();
+        if ($user) {
+            $conjuntoAleatorio = $this->gerarConjuntoAleatorio(6);
             $user->reset_code = $conjuntoAleatorio;
             $user->save();
 
-            Mail::to($email)->send(new CodigoReset($conjuntoAleatorio));
+            try {
+                Mail::to($email)->send(new CodigoReset($conjuntoAleatorio));
+            } catch (\Exception $e) {
+                return redirect()->back()->with('danger', 'Não foi possível enviar o e-mail de código de reset.');
             }
-
-
-
-        else{
-
-            $Request->session()->flash('danger', 'Usuario não encontrado');
-            return redirect()->route('login');
-
+            return redirect()->route('verirficacodigo')->with('success', 'E-mail de código de reset enviado com sucesso.');
         }
+        return redirect()->back()->with('danger', 'Usuário não encontrado.');
     }
 
-    public function alterar(){
+    public function verirficacodigo()
+    {
+        return view('main/verirficacodigo');
+    }
+
+    public function alterar()
+    {
 
         return view('main/alteraSenha');
     }
 
-    public function home(){
+    public function home()
+    {
 
- 
+
         return view('main/home');
 
     }
-        
-    
+
+
 
 
 }
