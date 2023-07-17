@@ -47,22 +47,22 @@
             <img src="{{ asset('img/cadeado.png') }}">
         </div>
         <center><h4 >Validação de dois fatores</h4></center>
-        <form action="" method="post">
+        <form method="post">
+            @csrf
             <div class="inputValues">
-                <input type="text">
-                <input type="text" disabled>
-                <input type="text" disabled>
-                <input type="text" disabled>
-                <input type="text" disabled>
-                <input type="text" disabled>
+                <input name="email" type="hidden" value="{{$email}}">
+                <input name="codigo"  type="text">
+                <input name="codigo1" type="text" disabled>
+                <input name="codigo2" type="text" disabled>
+                <input name="codigo3" type="text" disabled>
+                <input name="codigo4" type="text" disabled>
+                <input name="codigo5" type="text" disabled>
             </div>
             <button>
                 Validar codigo
             </button>
         </form>
     </div>
-
-
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>

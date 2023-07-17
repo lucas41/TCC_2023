@@ -100,15 +100,35 @@ class LoginController extends Controller
             } catch (\Exception $e) {
                 return redirect()->back()->with('danger', 'Não foi possível enviar o e-mail de código de reset.');
             }
-            return redirect()->route('verirficacodigo')->with('success', 'E-mail de código de reset enviado com sucesso.');
+            return redirect()->route('verirficacodigo')->with('email', $email)->with('success', 'E-mail de código de reset enviado com sucesso para ' . $email);
         }
         return redirect()->back()->with('danger', 'Usuário não encontrado.');
     }
 
-    public function verirficacodigo()
-    {
-        return view('main/verirficacodigo');
+    public function verirficacodigo(Request $request)
+    {   
+        $email = $request->session()->get('email');
+        return view('main/verirficacodigo', compact('email'));    
     }
+
+    public function verirficacodigopost(Request $Request)
+    {
+        $codigo = implode('', [
+            $Request->input('codigo'),
+            $Request->input('codigo1'),
+            $Request->input('codigo2'),
+            $Request->input('codigo3'),
+            $Request->input('codigo4'),
+            $Request->input('codigo5'),
+        ]);
+        
+        $email = $Request->input('email');
+
+        $user = users::where('email', $email)->first();
+        $mfa_banco = $user->reset_code;
+
+
+    } 
 
     public function alterar()
     {
