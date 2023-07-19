@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users;
+use App\Models\ContaBancaria;
 use Illuminate\Support\Facades\DB;
 use App\Mail\BoasvindasEmail;
 use App\Mail\CodigoReset;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -37,17 +39,16 @@ class LoginController extends Controller
         $email = $Request->input('email');
         $senha = $Request->input('senha');
 
-        $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
+        $user = users::where('email', $email)->where('senha', $senha)->first();
 
+        if ($user) {
+            session(['nome' => $user->nome]);
+            session(['id' => $user->id]);
 
-
-        if (!empty($results)) {
-            $nome = $results[0]->nome;
-            session(['nome' => $nome]);
             return redirect()->route('home');
-
         } else {
-            $Request->session()->flash('danger', 'Usuario ou senha incorreta');
+            // Autenticação falhou, redireciona de volta para a página de login
+            $Request->session()->flash('danger', 'Usuário ou senha incorretos');
             return redirect()->route('login');
         }
 
@@ -70,8 +71,8 @@ class LoginController extends Controller
         $post->save();
         $Request->session()->flash('success', 'Registro criado com sucesso.');
         try {
-        Mail::to($post->email)->send(new BoasvindasEmail());
-        }catch (\Exception $e) {
+            Mail::to($post->email)->send(new BoasvindasEmail());
+        } catch (\Exception $e) {
             return redirect()->back()->with('danger', 'Não foi possível enviar o e-mail de Boas vindas.');
         }
         return redirect()->route('login');
@@ -106,9 +107,9 @@ class LoginController extends Controller
     }
 
     public function verirficacodigo(Request $request)
-    {   
+    {
         $email = $request->session()->get('email');
-        return view('main/verirficacodigo', compact('email'));    
+        return view('main/verirficacodigo', compact('email'));
     }
 
     public function verirficacodigopost(Request $Request)
@@ -121,20 +122,20 @@ class LoginController extends Controller
             $Request->input('codigo4'),
             $Request->input('codigo5'),
         ]);
-        
+
         $email = $Request->input('email');
 
         $user = users::where('email', $email)->first();
 
         $mfa_banco = $user->reset_code;
-        
-        if($mfa_banco == $codigo){
+
+        if ($mfa_banco == $codigo) {
             return redirect()->route('altera')->with('email', $email);
-        }else{
+        } else {
             return redirect()->route('recuperacao')->with('danger', 'O codigo digita é diferente do enviado via Email por favor verificar');
         }
 
-    } 
+    }
 
     public function alterar(Request $Request)
     {
@@ -158,10 +159,21 @@ class LoginController extends Controller
 
     }
 
-    public function home()
+    public function home(Request $request)
     {
-        return view('main/home');
+       /*      
+       $userId = session('id');
+        ContaBancaria::create([
+            'Nome_banco' => 'banco teste',
+            'Agencia' => 'agencia teste',
+            'Numero' => '23454',
+            'user_id' => $userId,
+        ]);
 
+        Bloco de codigo a ser movido para o novo controller para efetuarmos testes para o cadastro de uma conta bancaria
+        */
+        return view('main/home');
+    
     }
 
 

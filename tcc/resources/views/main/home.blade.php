@@ -2,7 +2,8 @@
 
 <?php
 $nome = session('nome');
-echo("seja bem vindo  $nome");
+$id = session('id');
+echo("seja bem vindo  $id");
 
 ?>
 
