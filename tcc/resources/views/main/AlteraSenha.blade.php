@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,27 +8,28 @@
     <title>Esqueci minha senha</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- box -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
+
 <body>
     <!-- Criando Container-->
     <section class="global forms">
         <div class="form login">
             <div class="form-content">
-                <header>Alterar Senha</header>
-
-                <!-- Form -->
-                <form action="#">
+                <form method="POST">
+                    @csrf
                     <div class="field input-field">
-                        <input type="password" class="input" placeholder="Senha">
+                        <!-- Seu código HTML -->
+                        <input type="hidden" name="email" value="{{ $email }}" />
+                        <input type="senha" name="senha" class="input" placeholder="Senha">
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" class="input" placeholder="Senha">
+                        <input type="senha" name="senha" class="input" placeholder="Senha">
                     </div>
 
                     <div class="field button-field">
@@ -39,4 +41,5 @@
         </div>
     </section>
 </body>
+
 </html>

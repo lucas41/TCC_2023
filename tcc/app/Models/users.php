@@ -19,6 +19,13 @@ class users extends Model
         'senha',
     ];
 
+    public function updatePassword($senha)
+    {
+
+        $this->update([
+            'senha' => $senha,
+        ]);
+    }
 
 
 }

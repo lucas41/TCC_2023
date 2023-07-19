@@ -125,21 +125,41 @@ class LoginController extends Controller
         $email = $Request->input('email');
 
         $user = users::where('email', $email)->first();
-        $mfa_banco = $user->reset_code;
 
+        $mfa_banco = $user->reset_code;
+        
+        if($mfa_banco == $codigo){
+            return redirect()->route('altera')->with('email', $email);
+        }else{
+            return redirect()->route('recuperacao')->with('danger', 'O codigo digita é diferente do enviado via Email por favor verificar');
+        }
 
     } 
 
-    public function alterar()
+    public function alterar(Request $Request)
     {
+        $email = $Request->session()->get('email');
+        return view('main/AlteraSenha', compact('email'));
+    }
 
-        return view('main/alteraSenha');
+    public function alterarsenha(Request $Request)
+    {
+        $email = $Request->input('email');
+        $user = users::where('email', $email)->first();
+        $senha = $Request->input('senha');
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Usuário não encontrado.');
+        }
+
+        $user->updatePassword($senha);
+
+        return redirect()->route('login')->with('success', 'Senha atualizada com sucesso!');
+
     }
 
     public function home()
     {
-
-
         return view('main/home');
 
     }
