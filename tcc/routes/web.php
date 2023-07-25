@@ -23,6 +23,8 @@ Route::post('/verirficacodigo', 'LoginController@verirficacodigopost')->name('ve
 Route::group(['prefix' => 'aplicacao'], function () {
 
     Route::get('/home', 'homeController@home')->name('home')->middleware('checksession');
+    Route::get('/cadastroConta', 'ContaBancariaController@home')->name('Cadastraconta')->middleware('checksession');
+    Route::post('/cadastroConta', 'ContaBancariaController@CadastrarConta')->name('Cadatroform')->middleware('checksession');
 
 });
 

@@ -25,7 +25,6 @@ echo("seja bem vindo  $id");
     </ul>
 @endif
 
-
-
-
+<a href="/aplicacao/cadastroConta"> Cadastrar conta </a>
+<br>
 <a href="/logout">Sair</a>
