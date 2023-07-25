@@ -159,24 +159,4 @@ class LoginController extends Controller
 
     }
 
-    public function home(Request $request)
-    {
-       /*      
-       $userId = session('id');
-        ContaBancaria::create([
-            'Nome_banco' => 'banco teste',
-            'Agencia' => 'agencia teste',
-            'Numero' => '23454',
-            'user_id' => $userId,
-        ]);
-
-        Bloco de codigo a ser movido para o novo controller para efetuarmos testes para o cadastro de uma conta bancaria
-        */
-        return view('main/home');
-    
-    }
-
-
-
-
 }
