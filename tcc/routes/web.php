@@ -25,6 +25,8 @@ Route::group(['prefix' => 'aplicacao'], function () {
     Route::get('/home', 'homeController@home')->name('home')->middleware('checksession');
     Route::get('/cadastroConta', 'ContaBancariaController@home')->name('Cadastraconta')->middleware('checksession');
     Route::post('/cadastroConta', 'ContaBancariaController@CadastrarConta')->name('Cadatroform')->middleware('checksession');
+    Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
+    Route::get('/selecionar-conta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid');
 
 });
 

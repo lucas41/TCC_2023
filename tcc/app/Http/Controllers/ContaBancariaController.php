@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\ContaBancaria;
+use Illuminate\Support\Facades\Session;
 
 class ContaBancariaController extends Controller
 {
@@ -23,6 +24,22 @@ class ContaBancariaController extends Controller
         $post->Numero = $Request->input('Numero');
         $post->user_id  = $userId;
         $post->save();
+
+        return redirect()->route('home');
+    }
+
+    public function selecionaconta(Request $request){
+        
+        $userId = session('id');
+
+        $contasBancarias = ContaBancaria::where('user_id', $userId)->get();
+
+        return view ('conta/seleciona',compact('contasBancarias'));
+    }
+
+    public function selecionarContaid($id){
+
+        Session::put('id_conta_selecionada', $id);
 
         return redirect()->route('home');
     }
