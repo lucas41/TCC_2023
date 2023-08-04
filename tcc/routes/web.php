@@ -22,14 +22,20 @@ Route::post('/verirficacodigo', 'LoginController@verirficacodigopost')->name('ve
 
 Route::group(['prefix' => 'aplicacao'], function () {
 
-    Route::get('/home', 'homeController@home')->name('home')->middleware('checksession');
-    Route::get('/cadastroConta', 'ContaBancariaController@home')->name('Cadastraconta')->middleware('checksession');
-    Route::post('/cadastroConta', 'ContaBancariaController@CadastrarConta')->name('Cadatroform')->middleware('checksession');
-    Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
-    Route::get('/selecionar-conta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid');
+    Route::get('/home', 'homeController@home')->name('home')->middleware('checksession'); // Pagina inicial da aplicação
+    Route::get('/cadastroConta', 'ContaBancariaController@home')->name('Cadastraconta')->middleware('checksession');     //Cadastro de conta bancaria formulario
+    Route::post('/cadastroConta', 'ContaBancariaController@CadastrarConta')->name('Cadatroform')->middleware('checksession'); // cadastro de conbta bancaria recebimento do form 
+    Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
+    Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home
 
 });
 
+Route::group(['prefix' => 'CentroCusto'], function () {
+
+    Route::get('/cadastroCentrocusto', 'CentroCustoController@index')->name('CentroCusto')->middleware('checksession');     //Cadastro de conta bancaria formulario
+    Route::post('/cadastroCentrocusto', 'CentroCustoController@cadastro')->name('CentroCustocadastro')->middleware('checksession');     //Cadastro de conta bancaria formulario
+
+});
 
 Route::get('/logout', function () {
     session()->flush(); // remove todas as variáveis da sessão
