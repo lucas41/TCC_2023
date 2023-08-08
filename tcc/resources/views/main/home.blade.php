@@ -52,9 +52,7 @@
 
 
 
-    <br>
-    <a href={{ route('Cadastraconta') }}> Cadastrar conta </a>
-    <br>
+
     <a href={{ route('selecionaconta') }}> Selecionar conta </a>
     <br>
     <a href={{ route('CentroCusto') }}> Cadastrar Centro de custo </a>
