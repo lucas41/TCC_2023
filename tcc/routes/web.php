@@ -37,6 +37,13 @@ Route::group(['prefix' => 'CentroCusto'], function () {
 
 });
 
+Route::group(['prefix' => 'LancamentoContabil'], function() {
+    
+    Route::get('/cadastroLancamento', 'LancamentoContabilcontroller@index')->name('CadastroLancamento')->middleware('checksession');
+    Route::post('/cadastroLancamento', 'LancamentoContabilcontroller@cadastro')->name('CadastroLancamentofinal')->middleware('checksession');
+
+});
+
 Route::get('/logout', function () {
     session()->flush(); // remove todas as variáveis da sessão
     return redirect()->route('login'); // envia de volta para o login

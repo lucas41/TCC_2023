@@ -59,7 +59,11 @@
     <br>
     <a href={{ route('CentroCusto') }}> Cadastrar Centro de custo </a>
     <br>
+    <a href={{ route('CadastroLancamento') }}> Cadastrar Lançamento </a>
+    <br>
     <a href="/logout">Sair</a>
+
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>

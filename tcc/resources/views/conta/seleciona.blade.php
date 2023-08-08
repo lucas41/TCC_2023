@@ -11,7 +11,6 @@
                 <strong>Banco:</strong> {{ $conta->Nome_banco }}<br>
                 <strong>Agência:</strong> {{ $conta->Agencia }}<br>
                 <strong>Número:</strong> {{ $conta->Numero }}<br>
-                <!-- Se você tiver outros campos na tabela, exiba-os aqui também -->
             </li>
             <br>
         @endforeach
