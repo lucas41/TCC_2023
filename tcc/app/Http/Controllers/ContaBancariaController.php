@@ -18,12 +18,13 @@ class ContaBancariaController extends Controller
 
         $userId = session('id');
         $post = new ContaBancaria();
+        $post->Nome_Conta = $Request->input('Nome_Conta');
         $post->Nome_banco = $Request->input('Nome_banco');
-        $post->Agencia = $Request->input('Agencia' );
+        $post->Agencia = $Request->input('Agencia');
         $post->Numero = $Request->input('Numero');
         $post->user_id  = $userId;
         $post->save();
-        return redirect()->route('home');
+        return redirect()->route('selecionaconta');
 
     }
 

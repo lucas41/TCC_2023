@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('conta_bancaria', function (Blueprint $table) {
             $table->id();
+            $table->string('Nome_Conta');
             $table->string('Nome_banco');
             $table->string('Agencia');
             $table->string('Numero');
