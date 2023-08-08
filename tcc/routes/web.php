@@ -23,9 +23,8 @@ Route::post('/verirficacodigo', 'LoginController@verirficacodigopost')->name('ve
 Route::group(['prefix' => 'aplicacao'], function () {
 
     Route::get('/home', 'homeController@home')->name('home')->middleware('checksession'); // Pagina inicial da aplicação
-    Route::get('/cadastroConta', 'ContaBancariaController@home')->name('Cadastraconta')->middleware('checksession');     //Cadastro de conta bancaria formulario
-    Route::post('/cadastroConta', 'ContaBancariaController@CadastrarConta')->name('Cadatroform')->middleware('checksession'); // cadastro de conbta bancaria recebimento do form 
-    Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
+    Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
+    Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
     Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home
 
 });
@@ -34,6 +33,13 @@ Route::group(['prefix' => 'CentroCusto'], function () {
 
     Route::get('/cadastroCentrocusto', 'CentroCustoController@index')->name('CentroCusto')->middleware('checksession');     //Cadastro de conta bancaria formulario
     Route::post('/cadastroCentrocusto', 'CentroCustoController@cadastro')->name('CentroCustocadastro')->middleware('checksession');     //Cadastro de conta bancaria formulario
+
+});
+
+Route::group(['prefix' => 'LancamentoContabil'], function() {
+    
+    Route::get('/cadastroLancamento', 'LancamentoContabilcontroller@index')->name('CadastroLancamento')->middleware('checksession');
+    Route::post('/cadastroLancamento', 'LancamentoContabilcontroller@cadastro')->name('CadastroLancamentofinal')->middleware('checksession');
 
 });
 

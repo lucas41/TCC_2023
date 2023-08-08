@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+    --blue: #287bff;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+    --red1: #FF0000;
+    --green: #228B22;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* COMEÇO DO MENU LATERAL */
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+/* EFEITO MENU LATERAL */
+
+.navigation.active {
+    width: 80px;
+}
+
+/* EFEITO MENU LATERAL */
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* EFEITO DE CURVA AQUI */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* FIM DO MENU LATERAL */
+
+/* INICIO DO PRINCIPAL */
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+/* EFEITO DO MENU LATERAL */
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+/* EFEITO DO MENU LATERAL */
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2em;
+} 
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* INICIO CSS FORM */
+
+.alinhaCards { 
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 40px;
+}
+
+.AdicionarConta {
+    position: relative;
+    text-decoration: none;
+    color: var(--black1);
+}
+
+.cardOpcoesUsuario {
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    width: 400px;
+    padding: 20px 40px;
+    height: 80px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.alinhaCards .cardOpcoesUsuario:hover {
+    background: var(--blue) ;
+}
+
+.alinhaCards .cardOpcoesUsuario:hover,
+.alinhaCards .cardOpcoesUsuario:hover p,
+.alinhaCards .cardOpcoesUsuario:hover h2 {
+    color: var(--white) ;
+}
+
+
+/* MODAL AQUI */
+
+#fade, 
+#modal {
+    transition: .5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 5;
+}
+
+#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn-modal-fechar {
+    width: 30%;
+    border-radius: 10px;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid var(--red1);
+    margin-bottom: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.btn-modal-fechar:hover {
+    background: var(--red1);
+    color: var(--white);
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+#modal.hide,
+#fade.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#modal.hide {
+    top: 0;
+}
+
+/* FIM DO MODAL AQUI */
+
+.formularioPerfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    margin-top: 7px;
+    padding: 15px; 
+}
+
+.texto-deleta p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--black1);
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.inputForms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+}
+
+/* INICIO CSS DO INPUT */
+
+.inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    position: relative;
+}
+  
+.inputGroup input {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%;
+}
+  
+.inputGroup label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+}
+  
+.inputGroup :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: #e8e8e8;
+}
+  
+.inputGroup :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
+}
+
+/* FIM CSS DO INPUT */
+
+.botao-forms button {
+    width: 100%;
+    border-radius: 10px;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid var(--blue);
+    margin-bottom: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.botao-forms button:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+/* Fim formulario */
+
+
+/* LISTANDO ITENS DAS CONTAS */
+
+.listar-contas {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 20px 40px;
+}
+
+.card-Conta-User {
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    width: 525px;
+    padding: 20px 40px;
+    height: 130px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.header-card-conta {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.body-card-conta {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+
+/* Estilo para o botão com os três pontos */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dots {
+    width: 20px;
+    height: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 27px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    border-radius: 10px;
+    position: absolute;
+    background-color: var(--grey);
+    min-width: 120px;
+    padding: 8px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: var(--black1);
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--blue);
+    color: var(--white)
+  }
+
+/* Responsividade */
+
+@media (max-width: 991px) {
+    .formularioPerfil {
+        left: -300px;
+    }
+    .navigation.active {
+        width: 300px;
+        left: 0;
+    }
+    .main{
+        width: 100%;
+        left: 0;
+    }
+    .main.active {
+        left: 300px;
+    }
+    .cardBox{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
