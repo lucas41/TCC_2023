@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('Nome_banco');
             $table->string('Agencia');
             $table->string('Numero');
+            $table->string('saldo');
             $table->unsignedBigInteger('user_id'); // Chave estrangeira para o campo 'id' da tabela 'users'
             $table->timestamps();
-
             // Definindo a chave estrangeira
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

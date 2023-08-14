@@ -22,6 +22,7 @@ class ContaBancariaController extends Controller
         $post->Nome_banco = $Request->input('Nome_banco');
         $post->Agencia = $Request->input('Agencia');
         $post->Numero = $Request->input('Numero');
+        $post->saldo = $Request->input('saldo');
         $post->user_id  = $userId;
         $post->save();
         return redirect()->route('selecionaconta');
