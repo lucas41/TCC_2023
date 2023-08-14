@@ -9,7 +9,7 @@
 <body>
     <!-- Menu Lateral -->
     <div class="container">
-        <div class="navigation">
+                <div class="navigation">
             <ul>
                 <li>
                     <a href="#">
@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('home') }}">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Home</span>
                     </a>
@@ -28,6 +28,12 @@
                     <a href="#">
                         <span class="icon"><ion-icon name="calculator-outline"></ion-icon></span>
                         <span class="title">Centro de Custo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('selecionaconta') }}">
+                        <span class="icon"><ion-icon name="calculator-outline"></ion-icon></span>
+                        <span class="title">Conta Bancaria</span>
                     </a>
                 </li>
                 <li>
@@ -49,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/logout">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span class="title">Sair</span>
                     </a>
