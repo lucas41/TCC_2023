@@ -63,19 +63,41 @@ class LoginController extends Controller
 
     public function cadastro(Request $Request)
     {
-        $post = new users();
-        $post->nome = $Request->input('nome');
-        $post->sobrenome = $Request->input('sobrenome');
-        $post->email = $Request->input('email');
-        $post->senha = $Request->input('password');
-        $post->save();
-        $Request->session()->flash('success', 'Registro criado com sucesso.');
         try {
-            Mail::to($post->email)->send(new BoasvindasEmail());
-        } catch (\Exception $e) {
-            return redirect()->back()->with('danger', 'Não foi possível enviar o e-mail de Boas vindas.');
+            $Request->validate([
+                'nome' => 'required',
+                'sobrenome' => 'required',
+                'email' => 'required|email|unique',
+                'password' => 'required|min:6',
+                'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+    
+            $user = new users();
+            $user->nome = $Request->input('nome');
+            $user->sobrenome = $Request->input('sobrenome');
+            $user->email = $Request->input('email');
+            $user->senha = $Request->input('password');
+            
+            if ($Request->hasFile('foto')) {
+                $foto = $Request->file('foto');
+                $nomeFoto = time() . '_' . $foto->getClientOriginalName();
+                $caminhoFoto = public_path('img/users'); // Corrigido o separador de diretórios
+                $foto->move($caminhoFoto, $nomeFoto);
+                $user->foto = $nomeFoto;
+            }
+    
+       
         }
+        catch (\Exception $e) {
+            return redirect()->back()->with('danger', 'Erro ao realizar o cadastro. Por favor, verifique os dados e tente novamente: '. $e->getMessage());
+        }
+
+        $user->save();
+
+        Mail::to($user->email)->send(new BoasvindasEmail());
+        $Request->session()->flash('success', 'Registro criado com sucesso.');
         return redirect()->route('login');
+        
 
     }
 

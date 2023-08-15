@@ -14,6 +14,7 @@
 
 </head>
 <body>
+    @include('partials.verificalog')
     <!-- Criando Container-->
     <section class="global forms">
         <div class="form login">
@@ -21,7 +22,7 @@
                 <header>Cadastro</header>
                 
                 <!-- Form -->
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="field input-field">
                         <input type="text" class="input" name="nome" placeholder="Nome">
@@ -43,6 +44,10 @@
                     <div class="field input-field">
                         <input type="password" placeholder="Password" name="password" class="password">
                         <i class="bx bx-hide eye-icon"></i>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="file" placeholder="Arquivo" name="foto">
                     </div>
 
                     <div class="field button-field">
