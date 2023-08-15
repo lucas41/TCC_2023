@@ -67,6 +67,7 @@
         </div>
         <!-- CAMPO DO USUARIO -->
         <div class="user">
-            <img src="senhores.jpg" alt="">
+     
+            <img src="{{ asset('img/users/' . $user->foto) }}" alt="">
         </div>
     </div>

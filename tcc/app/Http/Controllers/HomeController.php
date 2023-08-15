@@ -13,8 +13,10 @@ class HomeController extends Controller
     {   
 
         $contaid = session('id_conta_selecionada');
+        $iduser = session('id');
         $conta = ContaBancaria::where('id', $contaid)->first();
-        return view('main/home', compact('conta'));
+        $user = users::where('id', $iduser)->first();
+        return view('main/home', compact('conta', 'user'));
         
     }
 }
