@@ -86,10 +86,9 @@ class LoginController extends Controller
                 $user->foto = $nomeFoto;
             }*/
 
-            
         }
         catch (\Exception $e) {
-            return redirect()->back()->with('danger', 'Erro ao realizar o cadastro. Por favor, verifique os dados e tente novamente: '. $e->getMessage());
+            return redirect()->back()->with('danger', ''. $e->getMessage());
         }
 
         

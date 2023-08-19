@@ -224,15 +224,115 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+
+.details .formularioPerfil {
+    position: relative;
+    display: grid;
+    min-height: 50px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.details .table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details .table thead td {
+    font-weight: 600;
+}
+
+.details .formularioPerfil thead tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+
+.details .formularioPerfil table tr:last-child {
+    border-bottom: none;
+}
+
+.details .formularioPerfil table tbody tr:hover {
+    background: var(--blue);
+    background: var(--white);
+}
+
+.details .formularioPerfil table tr td {
+    padding: 10px;
+}
+
+.details .formularioPerfil table tr td:last-child {
+    text-align: end;
+}
+
+.details .formularioPerfil tr td:nth-child(2) {
+    text-align: end;
+}
+
+.details .formularioPerfil tr td:nth-child(3) {
+    text-align: center;
+}
+
+.statusEntrada {
+    padding: 2px 4px;
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusSaida {
+    padding: 2px 4px;
+    background-color: var(--red1);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 /* INICIO CSS FORM */
 
 .alinhaCards { 
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     margin: 20px 40px;
 }
 
-.AdicionarConta {
+.acessarOpcao {
     position: relative;
     text-decoration: none;
     color: var(--black1);
@@ -245,95 +345,35 @@ body {
     padding: 20px 40px;
     height: 80px;
     margin-top: 10px;
-    cursor: pointer;
 }
 
+.cardOpcoesUsuario p {
+    font-size: 15px;
+    color: #6c6868;
+}
 
 .alinhaCards .cardOpcoesUsuario:hover {
     background: var(--blue) ;
 }
 
 .alinhaCards .cardOpcoesUsuario:hover,
-.alinhaCards .cardOpcoesUsuario:hover p,
-.alinhaCards .cardOpcoesUsuario:hover h2 {
+.alinhaCards .cardOpcoesUsuario:hover p {
     color: var(--white) ;
 }
 
+/* delete */
 
-/* MODAL AQUI */
-
-#fade, 
-#modal {
-    transition: .5s;
-    opacity: 1;
-    pointer-events: all;
+.alinhaCards .cardOpcoesUsuario:last-child:hover {
+    background: var(--red1) ;
 }
 
-#fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 5;
+.alinhaCards .cardOpcoesUsuario:hover,
+.alinhaCards .cardOpcoesUsuario:hover p, 
+.alinhaCards .cardOpcoesUsuario:hover a{
+    color: var(--white) ;
 }
 
-#modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--white);
-    z-index: 10;
-    width: 500px;
-    max-width: 90%;
-    padding: 1.2rem;
-    border-radius: 0.5rem;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-}
-
-.btn-modal-fechar {
-    width: 30%;
-    border-radius: 10px;
-    height: 40px;
-    margin-top: 5px;
-    font-size: 18px;
-    background: transparent;
-    border: 1px solid var(--red1);
-    margin-bottom: 15px;
-    font-family: 'Ubuntu', sans-serif;
-    cursor: pointer;
-}
-
-.btn-modal-fechar:hover {
-    background: var(--red1);
-    color: var(--white);
-}
-
-.modal-body p {
-    margin-bottom: 1rem;
-}
-
-#modal.hide,
-#fade.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#modal.hide {
-    top: 0;
-}
-
-/* FIM DO MODAL AQUI */
+/* Inicio formulario */
 
 .formularioPerfil {
     display: flex;
@@ -404,8 +444,9 @@ body {
 
 /* FIM CSS DO INPUT */
 
-.botao-forms button {
-    width: 100%;
+.botao-2fa button{
+    display: flex;
+    width: 43%;
     border-radius: 10px;
     height: 40px;
     margin-top: 5px;
@@ -415,86 +456,36 @@ body {
     margin-bottom: 15px;
     font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 7px;
 }
 
-.botao-forms button:hover {
+.botao-2fa button:hover {
     background: var(--blue);
     color: var(--white);
 }
 
-/* Fim formulario */
-
-
-/* LISTANDO ITENS DAS CONTAS */
-
-.listar-contas {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    margin: 20px 40px;
-}
-
-.card-Conta-User {
-    border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
-    width: 525px;
-    padding: 20px 40px;
-    height: 130px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
-
-.header-card-conta {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.body-card-conta {
-    font-size: 18px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-
-/* Estilo para o botão com os três pontos */
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dots {
-    width: 20px;
-    height: 20px;
-    background-color: var(--white);
-    border-radius: 50%;
-    text-align: center;
-    line-height: 20px;
-    cursor: pointer;
-    font-size: 27px;
-  }
-  
-  .dropdown-content {
-    display: none;
+.botao-forms button {
+    width: 100%;
     border-radius: 10px;
-    position: absolute;
-    background-color: var(--grey);
-    min-width: 120px;
-    padding: 8px;
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    display: block;
-    padding: 8px;
-    text-decoration: none;
-    color: var(--black1);
-  }
-  
-  .dropdown-content a:hover {
-    background-color: var(--blue);
-    color: var(--white)
-  }
+    height: 40px;
+    margin-top: 5px;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid var(--red1);
+    margin-bottom: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.botao-forms button:hover {
+    background: var(--red1);
+    color: var(--white);
+}
+
+/* Fim formulario */
 
 /* Responsividade */
 

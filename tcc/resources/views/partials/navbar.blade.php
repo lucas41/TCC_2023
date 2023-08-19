@@ -67,7 +67,6 @@
         </div>
         <!-- CAMPO DO USUARIO -->
         <div class="user">
-     
-            <img src="{{ asset('img/users/' . $user->foto) }}" alt="">
+            <a href="{{ route('configurar') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>
         </div>
     </div>
