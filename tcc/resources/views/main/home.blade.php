@@ -10,49 +10,133 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Botstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- box -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
 
+    @include('partials.verificalog')
 
-    @if (session('success'))
-        <div id="mensagem" class="flash-message">
-            {{ session('success') }}
+    <div class="container">
+
+        @include('partials.navbar')
+
+        <!-- Card box -->
+        <div class="cardBox">
+            <div class="cardPositive">
+                <div>
+                    <div class="numbers">R$ 1500</div>
+                    <div class="cardName">Entrada</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="cardBalance">
+                <div>
+                    @if (session('id_conta_selecionada') == null)
+                        <div class="numbers">R$ 0</div>
+                        <div class="cardName">Sem conta selecionada</div>
+                    @else
+                        <div class="numbers">R$ {{ $conta->saldo }}</div>
+                        <div class="cardName">Saldo Atual na conta {{ $conta->Nome_Conta }}</div>
+                    @endif
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="cardNegative">
+                <div class=>
+                    <div class="numbers">- R$1500</div>
+                    <div class="cardName">Saida</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="arrow-down-circle-outline"></ion-icon>
+                </div>
+            </div>
         </div>
-        <script>
-            setTimeout(function() {
-                $('#mensagem').fadeOut('slow');
-            }, 3500);
-        </script>
-    @endif
 
-    @if (session('danger'))
-        <div id="mensagem-erro" class="flash-message-erro">
-            {{ session('danger') }}
+        <!-- Graficos -->
+        <div class="graphBox">
+            <div class="box">
+                <canvas id="mensal"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="anual"></canvas>
+            </div>
         </div>
-        <script>
-            setTimeout(function() {
-                $('#mensagem-erro').fadeOut('slow');
-            }, 3500);
-        </script>
-    @endif
 
-    <?php
-    $nome = session('nome');
-    $id = session('id');
-    $conta = session('id_conta_selecionada');
-    echo "seja bem vindo  $nome";
-    echo '<br>';
-    echo "A conta selecionada e a conta de id $conta";
-    ?>
+        <!-- Informações aqui-->
+        <div class="details">
+            <div class="moviementacoesRecentes">
+                <div class="cardHeader">
+                    <h2>Movimentações Recentes</h2>
+                    <a href="#" class="btn">Ver tudo</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Valor</td>
+                            <td>Data</td>
+                            <td>Entrada/Saída</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>teste</td>
+                            <td>teste</td>
+                            <td>teste</td>
+                            <td><span class="statusEntrada">teste</span></td>
+                        </tr>
+                        <tr>
+                            <td>teste</td>
+                            <td>teste</td>
+                            <td>teste</td>
+                            <td><span class="statusSaida">teste</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+    </div>
+    </div>
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('js/filesCharts.js') }}"></script>
 
+    <script>
+        // Efeito do menu
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
 
+        toggle.onclick = function() {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+        // Aplica e remove a classe hoverd
+        let list = document.querySelectorAll('.navigation li');
+
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>
+</body>
+
+<!--
     <a href={{ route('selecionaconta') }}> Selecionar conta </a>
     <br>
     <a href={{ route('CentroCusto') }}> Cadastrar Centro de custo </a>
@@ -60,10 +144,6 @@
     <a href={{ route('CadastroLancamento') }}> Cadastrar Lançamento </a>
     <br>
     <a href="/logout">Sair</a>
-
-    
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</body>
+    -->
 
 </html>

@@ -17,12 +17,17 @@ Route::get('/altera', 'LoginController@alterar')->name('altera');
 Route::post('/altera', 'LoginController@alterarsenha')->name('alterasenha');
 Route::get('/verirficacodigo', 'LoginController@verirficacodigo')->name('verirficacodigo');
 Route::post('/verirficacodigo', 'LoginController@verirficacodigopost')->name('verirficacodigopost');
+
 });
 
 
 Route::group(['prefix' => 'aplicacao'], function () {
 
     Route::get('/home', 'homeController@home')->name('home')->middleware('checksession'); // Pagina inicial da aplicação
+    Route::get('/configura', 'homeController@configura')->name('configurar')->middleware('checksession'); 
+    Route::post('/configura', 'homeController@configurapost')->name('configurarpost')->middleware('checksession'); 
+    Route::get('/seguranca', 'homeController@seguranca')->name('seguranca')->middleware('checksession'); 
+    Route::get('/deletar', 'homeController@deletar')->name('deletar')->middleware('checksession'); 
     Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
     Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
     Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home

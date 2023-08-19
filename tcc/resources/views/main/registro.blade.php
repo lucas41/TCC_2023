@@ -14,6 +14,7 @@
 
 </head>
 <body>
+    @include('partials.verificalog')
     <!-- Criando Container-->
     <section class="global forms">
         <div class="form login">
@@ -24,15 +25,15 @@
                 <form method="post">
                     @csrf
                     <div class="field input-field">
-                        <input type="text" class="input" name="nome" placeholder="Nome">
+                        <input type="text" class="input" name="nome" placeholder="Nome" required>
                     </div>
 
                     <div class="field input-field">
-                        <input type="text" class="input" name="sobrenome" placeholder="Sobrenome">
+                        <input type="text" class="input" name="sobrenome" placeholder="Sobrenome" required>
                     </div>
 
                     <div class="field input-field">
-                        <input type="email" class="input" name="email" placeholder="Email">
+                        <input type="email" class="input" name="email" placeholder="Email" required>
                     </div>
 
                     <div class="field input-field">

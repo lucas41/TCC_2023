@@ -22,6 +22,7 @@ class ContaBancariaController extends Controller
         $post->Nome_banco = $Request->input('Nome_banco');
         $post->Agencia = $Request->input('Agencia');
         $post->Numero = $Request->input('Numero');
+        $post->saldo = $Request->input('saldo');
         $post->user_id  = $userId;
         $post->save();
         return redirect()->route('selecionaconta');
@@ -32,7 +33,8 @@ class ContaBancariaController extends Controller
         
         $userId = session('id');
         $contasBancarias = ContaBancaria::where('user_id', $userId)->get();
-        return view ('conta/seleciona',compact('contasBancarias'));
+        $user = users::where('id', $userId)->first();
+        return view ('conta/seleciona',compact('contasBancarias','user'));
     }
 
     public function selecionarContaid($id){

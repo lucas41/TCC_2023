@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('sobrenome');
             $table->string('email')->unique();
             $table->string('senha');
+            $table->string('foto')->nullable()->default("default.jpg");
             $table->string('reset_code')->nullable()->default(null);
         });
     }
