@@ -17,6 +17,11 @@ class users extends Model
         'sobrenome',
         'email',
         'senha',
+        'endereco',
+        'cidade',
+        'estado',
+        'cep',
+        'pais',
     ];
 
     public function updatePassword($senha)

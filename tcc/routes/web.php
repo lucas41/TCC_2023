@@ -27,6 +27,7 @@ Route::group(['prefix' => 'aplicacao'], function () {
     Route::get('/configura', 'homeController@configura')->name('configurar')->middleware('checksession'); 
     Route::post('/configura', 'homeController@configurapost')->name('configurarpost')->middleware('checksession'); 
     Route::get('/seguranca', 'homeController@seguranca')->name('seguranca')->middleware('checksession'); 
+    Route::post('/seguranca', 'homeController@segurancapost')->name('segurancapost')->middleware('checksession');
     Route::get('/deletar', 'homeController@deletar')->name('deletar')->middleware('checksession'); 
     Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
     Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost')->middleware('checksession'); // visualizado de contas bancarias cadastradas 

@@ -51,6 +51,11 @@ class HomeController extends Controller
         $user->nome = $Request->input('nome');
         $user->sobrenome = $Request->input('sobrenome');;
         $user->email = $Request->input('email');
+        $user->endereco = $Request->input('endereco');
+        $user->cidade = $Request->input('cidade');
+        $user->estado = $Request->input('estado');
+        $user->cep = $Request->input('cep');
+        $user->pais = $Request->input('pais');
         $user->save();
 
         return redirect()->route('configurar');
@@ -60,6 +65,21 @@ class HomeController extends Controller
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         return view('main/seguranca', compact('user'));
+    }
+
+    public function segurancapost(Request $Request){
+        $senhaatual = $Request->input('senhaatual');
+        $novasenha = $Request->input('novasenha');
+        $iduser = session('id');
+        $user = users::where('id', $iduser)->first();
+
+        if($user->senha == $senhaatual){
+            $user->updatePassword($novasenha);
+            return redirect()->back()->with('success', 'Senha atualizada com sucesso!');
+        }
+        else{
+            return redirect()->back()->with('danger', 'A senha digitada e diferente da senha atual');
+        }
     }
 
     public function deletar(){
