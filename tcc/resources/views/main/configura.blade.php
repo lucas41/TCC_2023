@@ -47,26 +47,26 @@
                     </div>
                     <br>
                     <div class="inputGroup">
-                        <input type="email"  autocomplete="off">
+                        <input type="text"  autocomplete="off" name="endereco" value="{{ $user->endereco }}">
                         <label for="name">Endereço</label>
                     </div>
                     <div class="inputForms">
                         <div class="inputGroup">
-                            <input type="text"  autocomplete="off">
+                            <input type="text"  autocomplete="off" name="cidade" value="{{ $user->cidade }}">
                             <label for="name">Cidade</label>
                         </div>
                         <div class="inputGroup">
-                            <input type="email"  autocomplete="off">
+                            <input type="text"  autocomplete="off" name="estado" value="{{ $user->estado }}">
                             <label for="name">Estado</label>
                         </div>
                     </div>
                     <div class="inputForms">
                         <div class="inputGroup">
-                            <input type="text"  autocomplete="off">
+                            <input type="text"  autocomplete="off" name="cep" value="{{ $user->cep }}">
                             <label for="name">CEP</label>
                         </div>
                         <div class="inputGroup">
-                            <input type="email" autocomplete="off">
+                            <input type="text" autocomplete="off" name="pais" value="{{ $user->pais }}">
                             <label for="name">Pais</label>
                         </div>
                     </div>

@@ -14,77 +14,91 @@
 
 <body>
 
+    <?php
+    use App\Mail\BoasvindasEmail;
+    ?>
     @include('partials.navbar')
     <!-- Formulario aqui-->
     <div class="alinhaCards">
-      @include('partials.cardsperfil')
+        @include('partials.cardsperfil')
 
-      
-      <div>
-        <div class="formularioPerfil">
-            <div>
-                <div class="texto-deleta">
-                    <h2>Deletar Conta</h2>
-                    <p>
-                        Que pena ver você indo embora! Sabemos que o mundo dos orçamentos pode ser sério e às vezes até um pouco chato, mas acredite, sua presença aqui sempre trouxe um toque especial de leveza e bom humor. Esperamos que sua jornada em busca de controle financeiro seja um sucesso, e que você alcance todos os seus objetivos!
-                    </p>
-                    <p>
-                        Caso mude de ideia ou precise de uma pausa, saiba que sempre será bem-vindo(a) de volta. Enquanto isso, vamos cuidar para que a plataforma continue eficiente e funcional, assim, quando você retornar, estaremos prontos para ajudá-lo(a) novamente.
-                    </p>
-                    <p>
-                        Para prosseguir com a exclusão da conta entre com sua senha e com o codigo 2FA enviado no seu e-mail cadastrado, após isso seus dados serão <b>permanentemente excluidos da plataforma</b>. 
-                    </p>
+
+        <div>
+            <div class="formularioPerfil">
+                <div>
+                    <div class="texto-deleta">
+                        <h2>Deletar Conta</h2>
+                        <p>
+                            Que pena ver você indo embora! Sabemos que o mundo dos orçamentos pode ser sério e às vezes
+                            até um pouco chato, mas acredite, sua presença aqui sempre trouxe um toque especial de
+                            leveza e bom humor. Esperamos que sua jornada em busca de controle financeiro seja um
+                            sucesso, e que você alcance todos os seus objetivos!
+                        </p>
+                        <p>
+                            Caso mude de ideia ou precise de uma pausa, saiba que sempre será bem-vindo(a) de volta.
+                            Enquanto isso, vamos cuidar para que a plataforma continue eficiente e funcional, assim,
+                            quando você retornar, estaremos prontos para ajudá-lo(a) novamente.
+                        </p>
+                        <p>
+                            Para prosseguir com a exclusão da conta entre com sua senha e com o codigo 2FA enviado no
+                            seu e-mail cadastrado, após isso seus dados serão <b>permanentemente excluidos da
+                                plataforma</b>.
+                        </p>
+                    </div>
+                    <form method="post">
+                        @csrf
+                        @method('DELETE')
+                        <div class="inputForms">
+                            <div class="inputGroup">
+                                <input type="password" name="senhaatual" required="" autocomplete="off">
+                                <label for="name">Senha Atual</label>
+                            </div>
+                            <div class="inputGroup">
+                                <input type="number" name="codigo2fa" required="" autocomplete="off">
+                                <label for="name">Codigo 2FA</label>
+                            </div>
+                        </div>
+                        <div class="botao-forms">
+                            <button>Deletar Conta</button>
+                        </div>
+                    </form>
                 </div>
-                <form action="" method="post">
-                    <div class="inputForms">
-                        <div class="inputGroup">
-                            <input type="password" required="" autocomplete="off">
-                            <label for="name">Senha Atual</label>
-                        </div>
-                        <div class="inputGroup">
-                            <input type="number" required="" autocomplete="off">
-                            <label for="name">Codigo 2FA</label>
-                        </div>
-                    </div>
-                    <div class="botao-2fa">
-                        <button>Solicitar 2FA</button>
-                    </div>
-                    <div class="botao-forms">
-                        <button>Deletar Conta</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
+    <form method="post" action="{{ route('enviar.email') }}">
+        @csrf
+        <div class="botao-2fa">
+            <button>Solicitar 2FA</button>
+        </div>
+    </form>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+    <script>
+        // Efeito do menu
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
 
-<script>
+        toggle.onclick = function() {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
 
-// Efeito do menu
-let toggle = document.querySelector('.toggle');
-let navigation = document.querySelector('.navigation');
-let main = document.querySelector('.main');
+        // Aplica e remove a classe hoverd
+        let list = document.querySelectorAll('.navigation li');
 
-toggle.onclick = function(){
-navigation.classList.toggle('active');
-main.classList.toggle('active');
-}
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
 
-// Aplica e remove a classe hoverd
-let list = document.querySelectorAll('.navigation li');
-function activeLink(){
-list.forEach((item) =>
-item.classList.remove('hovered'));
-this.classList.add('hovered');
-}
-
-list.forEach((item) =>
-item.addEventListener('mouseover',activeLink));
-
-</script>
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>
 </body>
+
 </html>
