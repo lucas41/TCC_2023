@@ -29,6 +29,7 @@ Route::group(['prefix' => 'aplicacao'], function () {
     Route::get('/seguranca', 'homeController@seguranca')->name('seguranca')->middleware('checksession'); 
     Route::post('/seguranca', 'homeController@segurancapost')->name('segurancapost')->middleware('checksession');
     Route::get('/deletar', 'homeController@deletar')->name('deletar')->middleware('checksession'); 
+    Route::delete('/deletar', 'homeController@destroy')->name('deletar.destroy');
     Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
     Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
     Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'CentroCusto'], function () {
 
     Route::get('/cadastroCentrocusto', 'CentroCustoController@index')->name('CentroCusto')->middleware('checksession');     //Cadastro de conta bancaria formulario
     Route::post('/cadastroCentrocusto', 'CentroCustoController@cadastro')->name('CentroCustocadastro')->middleware('checksession');     //Cadastro de conta bancaria formulario
+    Route::post('/enviar-email', 'homeController@enviarEmail')->name('enviar.email');
 
 });
 
@@ -52,4 +54,4 @@ Route::group(['prefix' => 'LancamentoContabil'], function() {
 Route::get('/logout', function () {
     session()->flush(); // remove todas as variáveis da sessão
     return redirect()->route('login'); // envia de volta para o login
-});
+})->name('logout');

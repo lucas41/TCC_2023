@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\ContaBancaria;
+use App\Mail\CodigoReset;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
-    
+    private function gerarConjuntoAleatorio($tamanho)
+    {
+        $caracteres = '0123456789';
+        return substr(str_shuffle($caracteres), 0, $tamanho);
+    }
+
     public function home(Request $request)
     {   
 
@@ -86,6 +93,32 @@ class HomeController extends Controller
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         return view('main/deletar', compact('user'));
+    }
+
+    public function destroy(Request $Request){
+        $iduser = session('id');
+        $user = users::where('id', $iduser)->first();
+        $novasenha = $Request->input('senhaatual');
+        $resetcode = $Request->input('codigo2fa');
+
+        echo($novasenha);   
+        if($novasenha == $user->senha && $resetcode == $user->reset_code){
+            $user->delete();
+            return redirect()->route('logout');
+        }
+        else{
+            echo("deu ruim");
+        }
+    }
+
+    public function enviarEmail(){
+        $iduser = session('id');
+        $user = users::where('id', $iduser)->first();
+        $conjuntoAleatorio = $this->gerarConjuntoAleatorio(6);
+            $user->reset_code = $conjuntoAleatorio;
+            $user->save();
+        Mail::to($user->email)->send(new CodigoReset($conjuntoAleatorio));
+        return redirect()->route('deletar');
     }
     
 }
