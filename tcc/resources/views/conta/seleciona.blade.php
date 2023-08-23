@@ -9,12 +9,10 @@
 </head>
 
 <body>
-
-    @include('partials.verificalog')
-    
     <div class="container">
 
         @include('partials.navbar')
+        @include('partials.verificalog')
 
         <!-- Formulario aqui-->
         <div class="alinhaCards">
@@ -87,7 +85,7 @@
                                 <a href="{{ route('selecionarContaid', ['id' => $conta->id]) }}">Selecionar
                                     Conta</a>
                                 <a href="#">Editar Informações</a>
-                                <a href="#">Excluir Conta</a>
+                                <a href="{{ route('apagarContaid', ['id' => $conta->id]) }}">Apagar Conta</a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +100,7 @@
 
 
 
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

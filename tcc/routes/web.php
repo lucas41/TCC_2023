@@ -33,6 +33,7 @@ Route::group(['prefix' => 'aplicacao'], function () {
     Route::get('/selecionaconta', 'ContaBancariaController@selecionaconta')->name('selecionaconta')->middleware('checksession');
     Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost')->middleware('checksession'); // visualizado de contas bancarias cadastradas 
     Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home
+    Route::get('/apagarContaid/{id}', 'ContaBancariaController@apagaContaid')->name('apagarContaid');  //apaga a conta bancaria seleiconada 
 
 });
 
