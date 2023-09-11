@@ -14,35 +14,41 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('selecionaconta') }}">
+                <span class="icon"><ion-icon name="wallet-outline"></ion-icon></span>
+                <span class="title">Conta Bancaria</span>
+            </a>
+        </li>
+        <li>
             <a href="#">
                 <span class="icon"><ion-icon name="calculator-outline"></ion-icon></span>
                 <span class="title">Centro de Custo</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('selecionaconta') }}">
-                <span class="icon"><ion-icon name="calculator-outline"></ion-icon></span>
-                <span class="title">Conta Bancaria</span>
-            </a>
-        </li>
-        <li>
             <a href="#">
                 <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
-                <span class="title">Investimentos</span>
+                <span class="title">Lançamentos</span>
             </a>
         </li>
         <li>
             <a href="#">
+                <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                <span class="title">Relatorios</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('configurar')}}">
                 <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                 <span class="title">Configurações</span>
             </a>
         </li>
-        <li>
+        <!--<li>
             <a href="#">
                 <span class="icon"><ion-icon name="contrast-outline"></ion-icon></span>
                 <span class="title">Dark Mode</span>
             </a>
-        </li>
+        </li>-->
         <li>
             <a href="/logout">
                 <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>

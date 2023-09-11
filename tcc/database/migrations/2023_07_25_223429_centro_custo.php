@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('CentroCusto', function (Blueprint $table) {
             $table->id();
             $table->string('Nome');
-            $table->string('Tipo');
-            $table->unsignedBigInteger('conta_bancaria_id'); // Chave estrangeira para o campo 'id' da tabela 'conta_bancaria'
+            $table->decimal('valplanejado')->default("0");
+            $table->decimal('valatual')->default("0");
             $table->timestamps();
-            // Definindo a chave estrangeira
-            $table->foreign('conta_bancaria_id')->references('id')->on('conta_bancaria')->onDelete('cascade');
+
         });
     }
 
