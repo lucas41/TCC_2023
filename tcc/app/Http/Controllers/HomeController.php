@@ -17,30 +17,32 @@ class HomeController extends Controller
     }
 
     public function home(Request $request)
-    {   
+    {
 
         $contaid = session('id_conta_selecionada');
         $iduser = session('id');
         $conta = ContaBancaria::where('id', $contaid)->first();
         $user = users::where('id', $iduser)->first();
         return view('main/home', compact('conta', 'user'));
-        
+
     }
 
-    public function configura() {
+    public function configura()
+    {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         return view('main/configura', compact('user'));
     }
 
-    public function configurapost(Request $Request){
+    public function configurapost(Request $Request)
+    {
         $iduser = session('id');
         $user = users::find($iduser);
         $nomeFotoAntiga = $user->foto;
 
 
         if ($Request->hasFile('foto')) {
-            
+
             if ($nomeFotoAntiga <> 'default.jpg') {
                 $caminhoFotoAntiga = public_path('img/users') . '/' . $nomeFotoAntiga;
                 if (file_exists($caminhoFotoAntiga)) {
@@ -56,7 +58,8 @@ class HomeController extends Controller
         }
 
         $user->nome = $Request->input('nome');
-        $user->sobrenome = $Request->input('sobrenome');;
+        $user->sobrenome = $Request->input('sobrenome');
+        ;
         $user->email = $Request->input('email');
         $user->endereco = $Request->input('endereco');
         $user->cidade = $Request->input('cidade');
@@ -68,57 +71,60 @@ class HomeController extends Controller
         return redirect()->route('configurar');
     }
 
-    public function seguranca(){
+    public function seguranca()
+    {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         return view('main/seguranca', compact('user'));
     }
 
-    public function segurancapost(Request $Request){
+    public function segurancapost(Request $Request)
+    {
         $senhaatual = $Request->input('senhaatual');
         $novasenha = $Request->input('novasenha');
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
 
-        if($user->senha == $senhaatual){
+        if ($user->senha == $senhaatual) {
             $user->updatePassword($novasenha);
             return redirect()->back()->with('success', 'Senha atualizada com sucesso!');
-        }
-        else{
+        } else {
             return redirect()->back()->with('danger', 'A senha digitada e diferente da senha atual');
         }
     }
 
-    public function deletar(){
+    public function deletar()
+    {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         return view('main/deletar', compact('user'));
     }
 
-    public function destroy(Request $Request){
+    public function destroy(Request $Request)
+    {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         $novasenha = $Request->input('senhaatual');
         $resetcode = $Request->input('codigo2fa');
 
-        echo($novasenha);   
-        if($novasenha == $user->senha && $resetcode == $user->reset_code){
+        echo ($novasenha);
+        if ($novasenha == $user->senha && $resetcode == $user->reset_code) {
             $user->delete();
             return redirect()->route('logout');
-        }
-        else{
-            echo("deu ruim");
+        } else {
+            return redirect()->back()->with('danger', 'Não foi possivel apagar a conta');
         }
     }
 
-    public function enviarEmail(){
+    public function enviarEmail()
+    {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
         $conjuntoAleatorio = $this->gerarConjuntoAleatorio(6);
-            $user->reset_code = $conjuntoAleatorio;
-            $user->save();
+        $user->reset_code = $conjuntoAleatorio;
+        $user->save();
         Mail::to($user->email)->send(new CodigoReset($conjuntoAleatorio));
         return redirect()->route('deletar');
     }
-    
+
 }

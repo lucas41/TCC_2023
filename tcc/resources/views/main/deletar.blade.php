@@ -6,23 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sair</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('css/deletar.css') }}">
 
 </head>
 
 <body>
-
-    <?php
-    use App\Mail\BoasvindasEmail;
-    ?>
     @include('partials.navbar')
+    @include('partials.verificalog')
     <!-- Formulario aqui-->
     <div class="alinhaCards">
         @include('partials.cardsperfil')
-
-
         <div>
             <div class="formularioPerfil">
                 <div>
