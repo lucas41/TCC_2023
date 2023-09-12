@@ -20,7 +20,7 @@ class ConfiguracaoController extends Controller
     {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
-        return view('main/configura', compact('user'));
+        return view('configuracao/configura', compact('user'));
 
     }
 
@@ -67,7 +67,7 @@ class ConfiguracaoController extends Controller
     {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
-        return view('main/seguranca', compact('user'));
+        return view('configuracao/seguranca', compact('user'));
     }
 
     public function segurancapost(Request $Request)
@@ -89,7 +89,7 @@ class ConfiguracaoController extends Controller
     {
         $iduser = session('id');
         $user = users::where('id', $iduser)->first();
-        return view('main/deletar', compact('user'));
+        return view('configuracao/deletar', compact('user'));
     }
 
     public function destroy(Request $Request)

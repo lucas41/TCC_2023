@@ -22,14 +22,14 @@ class LoginController extends Controller
     public function index()
     {
 
-        return view('main/index');
+        return view('acesso/index');
 
     }
 
     public function login()
     {
 
-        return view('main/login');
+        return view('acesso/login');
 
     }
 
@@ -57,7 +57,7 @@ class LoginController extends Controller
     public function registro()
     {
 
-        return view('main/registro');
+        return view('acesso/registro');
 
     }
 
@@ -78,14 +78,6 @@ class LoginController extends Controller
             $user->email = $Request->input('email');
             $user->senha = $Request->input('password');
             
-           /* if ($Request->hasFile('foto')) {
-                $foto = $Request->file('foto');
-                $nomeFoto = time() . '_' . $foto->getClientOriginalName();
-                $caminhoFoto = public_path('img/users'); // Corrigido o separador de diretórios
-                $foto->move($caminhoFoto, $nomeFoto);
-                $user->foto = $nomeFoto;
-            }*/
-
         }
         catch (\Exception $e) {
             return redirect()->back()->with('danger', ''. $e->getMessage());
@@ -103,7 +95,7 @@ class LoginController extends Controller
     public function recupera()
     {
 
-        return view('main/RecuperaSenha');
+        return view('acesso/RecuperaSenha');
 
     }
 
@@ -130,7 +122,7 @@ class LoginController extends Controller
     public function verirficacodigo(Request $request)
     {
         $email = $request->session()->get('email');
-        return view('main/verirficacodigo', compact('email'));
+        return view('acesso/verirficacodigo', compact('email'));
     }
 
     public function verirficacodigopost(Request $Request)
@@ -161,7 +153,7 @@ class LoginController extends Controller
     public function alterar(Request $Request)
     {
         $email = $Request->session()->get('email');
-        return view('main/AlteraSenha', compact('email'));
+        return view('acesso/AlteraSenha', compact('email'));
     }
 
     public function alterarsenha(Request $Request)
