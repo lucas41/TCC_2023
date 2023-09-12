@@ -38,7 +38,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('configurar')}}">
+            <a href="{{route('configurar.get')}}">
                 <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                 <span class="title">Configurações</span>
             </a>
@@ -73,6 +73,6 @@
         </div>
         <!-- CAMPO DO USUARIO -->
         <div class="user">
-            <a href="{{ route('configurar') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>
+            <a href="{{ route('configurar.get') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>
         </div>
     </div>
