@@ -2,16 +2,24 @@ const first = document.getElementById('mensal');
 const second = document.getElementById('anual');
 const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
+
+
+const nome = centrocusto.map(item => item.Nome);
+const valor = centrocusto.map(item => item.valplanejado);
+
+
+
 new Chart(first, {
   type: 'doughnut',
   data: {
-    labels: ['<?php echo $elefante; ?>', 'Saidas'],
+    labels: nome,
     datasets: [{
       label: 'Entradas e Saidas do Mes',
-      data: [12, 19],
+      data: valor,
       backgroundColor:[
         'rgba(0, 128, 0, 1)',
         'rgba(255, 0, 0, 1)',
+        'rgba(0, 0, 255 , 1)',
       ]
     }]
   },
