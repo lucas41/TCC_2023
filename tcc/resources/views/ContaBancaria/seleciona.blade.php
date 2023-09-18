@@ -84,7 +84,7 @@
                             <div class="dropdown-content">
                                 <a href="{{ route('selecionarContaid', ['id' => $conta->id]) }}">Selecionar
                                     Conta</a>
-                                <a href="#">Editar Informações</a>
+                                    <a>Editar Informações</a>
                                 <a href="{{ route('apagarContaid', ['id' => $conta->id]) }}">Apagar Conta</a>
                             </div>
                         </div>
@@ -106,29 +106,7 @@
 
         <script src="{{ asset('js/contaBancaria.js') }}"></script>
 
-        <script>
-            // Efeito do menu
-            let toggle = document.querySelector('.toggle');
-            let navigation = document.querySelector('.navigation');
-            let main = document.querySelector('.main');
 
-            toggle.onclick = function() {
-                navigation.classList.toggle('active');
-                main.classList.toggle('active');
-            }
-
-            // Aplica e remove a classe hoverd
-            let list = document.querySelectorAll('.navigation li');
-
-            function activeLink() {
-                list.forEach((item) =>
-                    item.classList.remove('hovered'));
-                this.classList.add('hovered');
-            }
-
-            list.forEach((item) =>
-                item.addEventListener('mouseover', activeLink));
-        </script>
 </body>
 
 </html>

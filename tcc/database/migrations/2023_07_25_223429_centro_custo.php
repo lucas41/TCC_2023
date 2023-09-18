@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('Nome');
             $table->decimal('valplanejado')->default("0");
             $table->decimal('valatual')->default("0");
+            $table->unsignedBigInteger('user_id'); // Chave estrangeira para o campo 'id' da tabela 'users'
             $table->timestamps();
+            // Definindo a chave estrangeira
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

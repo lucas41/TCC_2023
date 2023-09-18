@@ -10,6 +10,9 @@
     <div class="field input-field">
         <input type="text" name="Tipo" class="input" placeholder="Tipo">
     </div>
+    <div class="field input-field">
+        <input type="number" name="valor" class="input" placeholder="valor">
+    </div>
     <div>
         <input type="hidden" name="id_conta_selecionada" value="{{ session('id_conta_selecionada') }}">
     </div>
@@ -19,7 +22,6 @@
             <option value={{ $centro->id }}>{{ $centro->Nome }}</option>
         @endforeach
     </select>
-
 
     <div class="field button-field">
         <button>Cadastrar Conta </button>

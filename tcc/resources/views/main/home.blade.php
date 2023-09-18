@@ -23,6 +23,7 @@
 
         @include('partials.navbar')
 
+
         <!-- Card box -->
         <div class="cardBox">
             <div class="cardPositive">
@@ -105,7 +106,6 @@
 
     </div>
     </div>
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -133,17 +133,11 @@
 
         list.forEach((item) =>
             item.addEventListener('mouseover', activeLink));
+
+        
+    
     </script>
 </body>
 
-<!--
-    <a href={{ route('selecionaconta') }}> Selecionar conta </a>
-    <br>
-    <a href={{ route('CentroCusto') }}> Cadastrar Centro de custo </a>
-    <br>
-    <a href={{ route('CadastroLancamento') }}> Cadastrar Lançamento </a>
-    <br>
-    <a href="/logout">Sair</a>
-    -->
 
 </html>

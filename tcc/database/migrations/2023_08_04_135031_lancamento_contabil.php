@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Nome');
             $table->string('Tipo');
+            $table->decimal('valor');
             $table->unsignedBigInteger('conta_bancaria_id'); // Chave estrangeira para o campo 'id' da tabela 'conta_bancaria'
             $table->unsignedBigInteger('centro_custo_id'); // Chave estrangeira para o campo 'id' da tabela 'Centro de custo'
             $table->timestamps();

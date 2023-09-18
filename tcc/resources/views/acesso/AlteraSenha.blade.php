@@ -25,11 +25,11 @@
                     <div class="field input-field">
                         <!-- Seu código HTML -->
                         <input type="hidden" name="email" value="{{ $email }}" />
-                        <input type="senha" name="senha" class="input" placeholder="Senha">
+                        <input type="password" name="senha" class="input" placeholder="Senha">
                     </div>
 
                     <div class="field input-field">
-                        <input type="senha" name="senha" class="input" placeholder="Senha">
+                        <input type="password" name="senha" class="input" placeholder="Senha">
                     </div>
 
                     <div class="field button-field">

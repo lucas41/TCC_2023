@@ -4,27 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CentroCusto;
+use App\Models\users;
 
 class CentroCustoController extends Controller
 {
     public function index()
     {
-        $conta = session('id_conta_selecionada');
-
-        if ($conta == null) {
-            return redirect()->back()->with('danger', 'Para cadastrar um centro de custo é preciso ter uma conta selecionada');
-        } else {
-            return view('centrocusto/index');
-        }
+            $iduser = session('id');
+            $user = users::where('id', $iduser)->first();
+            $centrocusto = CentroCusto::where('user_id', $iduser)->get();
+            return view('centrocusto/index', compact('centrocusto','user'));
+        
 
     }
 
     public function cadastro(Request $Request){
-
+        $iduser = session('id');
         $post = new CentroCusto();
         $post->nome = $Request->input('nome');
-        $post->tipo = $Request->input('tipo' );
-        $post->conta_bancaria_id = $Request->input('id_conta_selecionada');
+        $post->valplanejado = $Request->input('valplanejado');
+        $post->user_id = $iduser;
         $post->save();
         return redirect()->route('home');
 
