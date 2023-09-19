@@ -25,7 +25,6 @@
     <div class="container">
 
         @include('partials.navbar')
-
         <!-- Card box -->
         <div class="cardBox">
             <div class="cardPositive">
@@ -79,7 +78,11 @@
                     <h2>Movimentações Recentes</h2>
                     <a href="#" class="btn">Ver tudo</a>
                 </div>
-                <table>
+                @if (session('id_conta_selecionada') == null)
+                <br>
+                <h2> não há lançamentos cadastrados </h2>
+                @else
+                <table>     
                     <thead>
                         <tr>
                             <td>Nome</td>
@@ -89,20 +92,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($lancamentos as $lancamento)   
                         <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td><span class="statusEntrada">teste</span></td>
+                            <td>{{$lancamento->Nome}}</td>
+                            <td>{{$lancamento->valor}}</td>
+                            <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
+                            <td><span class="statusEntrada">{{$lancamento->Tipo}}</span></td>
                         </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td><span class="statusSaida">teste</span></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
 
