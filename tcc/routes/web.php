@@ -55,8 +55,8 @@ Route::group(['prefix' => 'CentroCusto', 'middleware' => 'checksession'], functi
 
 Route::group(['prefix' => 'LancamentoContabil', 'middleware' => 'checksession'], function() { //Rotas ligadas aos cadastro e manutenção dos lançamentos
 
-    Route::get('/cadastroLancamento', 'LancamentoContabilcontroller@index')->name('CadastroLancamento');
-    Route::post('/cadastroLancamento', 'LancamentoContabilcontroller@cadastro')->name('CadastroLancamentofinal');
+    Route::get('/cadastroLancamento', 'LancamentoContabilController@index')->name('CadastroLancamento');
+    Route::post('/cadastroLancamento', 'LancamentoContabilController@cadastro')->name('CadastroLancamentofinal');
 
 });
 
