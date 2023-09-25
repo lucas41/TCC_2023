@@ -21,7 +21,7 @@ Route::group(['prefix' => 'acesso'], function () { // Rotas voltas para a parte 
 
 Route::group(['prefix' => 'main', 'middleware' => 'checksession'], function () { // Rotas ligadas diretamente com a home da aplicação
 
-    Route::get('/home', 'homeController@home')->name('home'); // Pagina inicial da aplicação
+    Route::get('/home', 'HomeController@home')->name('home'); // Pagina inicial da aplicação
 
 });
 
