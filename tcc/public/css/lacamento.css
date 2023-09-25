@@ -225,114 +225,24 @@ body {
     object-fit: cover;
 }
 
-.details {
+/* CSS dos CARDS */
+.cardBox {
     position: relative;
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3,1fr);
     grid-gap: 30px;
-    margin-top: 10px;
 }
 
-.details .formularioPerfil {
-    position: relative;
-    display: grid;
-    min-height: 50px;
-    background: var(--white);
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
-    border-radius: 20px;
-}
-
-.cardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.cardHeader h2 {
-    font-weight: 600;
-    color: var(--blue);
-}
-
-.btn {
-    position: relative;
-    padding: 5px 10px;
-    background: var(--blue);
-    text-decoration: none;
-    color: var(--white);
-    border-radius: 6px;
-}
-
-.details .table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.details .table thead td {
-    font-weight: 600;
-}
-
-.details .formularioPerfil thead tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    font-weight: 600;
-}
-
-.details .formularioPerfil table tr:last-child {
-    border-bottom: none;
-}
-
-.details .formularioPerfil table tbody tr:hover {
-    background: var(--blue);
-    background: var(--white);
-}
-
-.details .formularioPerfil table tr td {
-    padding: 10px;
-}
-
-.details .formularioPerfil table tr td:last-child {
-    text-align: end;
-}
-
-.details .formularioPerfil tr td:nth-child(2) {
-    text-align: end;
-}
-
-.details .formularioPerfil tr td:nth-child(3) {
-    text-align: center;
-}
-
-.statusEntrada {
-    padding: 2px 4px;
-    background-color: var(--green);
-    color: var(--white);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.statusSaida {
-    padding: 2px 4px;
-    background-color: var(--red1);
-    color: var(--white);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* INICIO CSS FORM */
-
+/* CSS DO MODEL */
 .alinhaCards { 
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    justify-content: flex-end;
     margin: 20px 40px;
 }
 
-.acessarOpcao {
+.AdicionarConta {
     position: relative;
     text-decoration: none;
     color: var(--black1);
@@ -345,60 +255,92 @@ body {
     padding: 20px 40px;
     height: 80px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
-.cardOpcoesUsuario p {
-    font-size: 15px;
-    color: #6c6868;
+/* MODAL AQUI */
+
+#fade, 
+#modal {
+    transition: .5s;
+    opacity: 1;
+    pointer-events: all;
 }
 
-.alinhaCards .cardOpcoesUsuario:hover {
-    background: var(--blue) ;
-}
-
-.alinhaCards .cardOpcoesUsuario:hover,
-.alinhaCards .cardOpcoesUsuario:hover p {
-    color: var(--white) ;
-}
-
-/* delete */
-
-.alinhaCards .cardOpcoesUsuario:last-child:hover {
-    background: var(--red1) ;
-}
-
-.alinhaCards .cardOpcoesUsuario:hover,
-.alinhaCards .cardOpcoesUsuario:hover p, 
-.alinhaCards .cardOpcoesUsuario:hover a{
-    color: var(--white) ;
-}
-
-/* Inicio formulario */
-
-.formularioPerfil {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
-    margin-top: 7px;
-    padding: 15px; 
-}
-
-.texto-deleta p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--black1);
-    margin-bottom: 10px;
-    text-align: justify;
-}
-
-.inputForms {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 5;
+}
+
+#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn-modal-fechar {
+    width: 30%;
+    border-radius: 10px;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid var(--red1);
+    margin-bottom: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.btn-modal-fechar:hover {
+    background: var(--red1);
+    color: var(--white);
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+#modal.hide,
+#fade.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#modal.hide {
+    top: 0;
+}
+
+/* FIM DO MODAL AQUI */
+
+
+.icon-options {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
 }
 
 /* INICIO CSS DO INPUT */
@@ -444,7 +386,7 @@ body {
 
 /* FIM CSS DO INPUT */
 
-.botao-2fa button{
+.botao-forms button {
     width: 100%;
     border-radius: 10px;
     height: 40px;
@@ -457,35 +399,125 @@ body {
     cursor: pointer;
 }
 
-.botao-2fa button:hover {
+.botao-forms button:hover {
     background: var(--blue);
     color: var(--white);
 }
 
-.botao-forms button {
+/* CSS SELECT */
+
+
+
+
+/* CSS dos Ultimos items*/ 
+
+.details {
+    position: relative;
     width: 100%;
-    border-radius: 10px;
-    height: 40px;
-    margin-top: 5px;
-    font-size: 18px;
-    background: transparent;
-    border: 1px solid var(--red1);
-    margin-bottom: 15px;
-    font-family: 'Ubuntu', sans-serif;
-    cursor: pointer;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
 }
 
-.botao-forms button:hover {
-    background: var(--red1);
+.details .moviementacoesRecentes {
+    position: relative;
+    display: grid;
+    min-height: 50px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
     color: var(--white);
+    border-radius: 6px;
 }
 
-/* Fim formulario */
+.details .table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
 
-/* Responsividade */
+.details .table thead td {
+    font-weight: 600;
+}
 
+.details .moviementacoesRecentes thead tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+
+.details .moviementacoesRecentes table tr:last-child {
+    border-bottom: none;
+}
+
+.details .moviementacoesRecentes table tbody tr:hover {
+    background: var(--blue);
+    background: var(--white);
+}
+
+.details .moviementacoesRecentes table tr td {
+    padding: 10px;
+}
+
+.details .moviementacoesRecentes table tr td:last-child {
+    text-align: end;
+}
+
+.details .moviementacoesRecentes tr td:nth-child(2) {
+    text-align: end;
+}
+
+.details .moviementacoesRecentes tr td:nth-child(3) {
+    text-align: center;
+}
+
+.statusEntrada {
+    padding: 2px 4px;
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusSaida {
+    padding: 2px 4px;
+    background-color: var(--red1);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* Deixando responsivo */
 @media (max-width: 991px) {
-    .formularioPerfil {
+    .graphBox{
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .navigation {
         left: -300px;
     }
     .navigation.active {
@@ -501,5 +533,32 @@ body {
     }
     .cardBox{
         grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .cardBox {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+    .toggle {
+        z-index: 10001;
+    }
+    .main.active .toggle {
+        position: fixed;
+        right: 0;
+        left: initial;
+        color: var(--white);
     }
 }

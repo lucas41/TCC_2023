@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     private function gerarConjuntoAleatorio($tamanho)
     {
-        $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $caracteres = '0123456789';
         return substr(str_shuffle($caracteres), 0, $tamanho);
     }
 

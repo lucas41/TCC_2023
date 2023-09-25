@@ -20,10 +20,8 @@
 
 <body>
 
-    @include('partials.verificalog')
 
     <div class="container">
-
         @include('partials.navbar')
         <!-- Card box -->
         <div class="cardBox">
@@ -70,7 +68,7 @@
                 <canvas id="anual"></canvas>
             </div>
         </div>
-
+        @include('partials.verificalog')
         <!-- Informações aqui-->
         <div class="details">
             <div class="moviementacoesRecentes">
