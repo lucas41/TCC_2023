@@ -34,8 +34,11 @@ class LancamentoContabilController extends Controller
         $post->save();
         
         CentroCusto::where('id', $post->centro_custo_id)->increment('valatual', $post->valor);
-        ContaBancaria::where('id', $post->conta_bancaria_id)->DECREMENT('saldo', $post->valor);
-        
+        if($post->Tipo == 1){
+            ContaBancaria::where('id', $post->conta_bancaria_id)->increment('saldo', $post->valor);
+        }else if($post->Tipo == 2){
+            ContaBancaria::where('id', $post->conta_bancaria_id)->decrement('saldo', $post->valor);
+        }
        
 
         return redirect()->route('CadastroLancamento');
