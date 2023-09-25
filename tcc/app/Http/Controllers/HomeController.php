@@ -23,6 +23,7 @@ class HomeController extends Controller
         $centrocusto = CentroCusto::where('user_id', $iduser)->get();
         $conta = ContaBancaria::where('id', $contaid)->first();
         $user = users::where('id', $iduser)->first();
+
         return view('main/home', compact('conta', 'user','centrocusto', 'lancamentos'));
 
     }
