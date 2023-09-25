@@ -12,7 +12,7 @@ class ContaBancariaController extends Controller
 
     public function home()
     {
-        return view('conta/cadastro');
+        return view('ContaBancaria/cadastro');
     }
 
     public function CadastrarConta(Request $Request)
@@ -37,7 +37,7 @@ class ContaBancariaController extends Controller
         $userId = session('id');
         $contasBancarias = ContaBancaria::where('user_id', $userId)->get();
         $user = users::where('id', $userId)->first();
-        return view('conta/seleciona', compact('contasBancarias', 'user'));
+        return view('ContaBancaria/seleciona', compact('contasBancarias', 'user'));
     }
 
     public function selecionarContaid($id)

@@ -13,16 +13,16 @@
     <!-- box -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <script>
+         var centrocusto = <?php echo json_encode($centrocusto); ?>;
+    </script>
 </head>
 
 <body>
 
-    @include('partials.verificalog')
 
     <div class="container">
-
         @include('partials.navbar')
-
         <!-- Card box -->
         <div class="cardBox">
             <div class="cardPositive">
@@ -68,7 +68,7 @@
                 <canvas id="anual"></canvas>
             </div>
         </div>
-
+        @include('partials.verificalog')
         <!-- Informações aqui-->
         <div class="details">
             <div class="moviementacoesRecentes">
@@ -76,7 +76,11 @@
                     <h2>Movimentações Recentes</h2>
                     <a href="#" class="btn">Ver tudo</a>
                 </div>
-                <table>
+                @if (session('id_conta_selecionada') == null)
+                <br>
+                <h2> não há lançamentos cadastrados </h2>
+                @else
+                <table>     
                     <thead>
                         <tr>
                             <td>Nome</td>
@@ -86,31 +90,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($lancamentos as $lancamento)   
                         <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td><span class="statusEntrada">teste</span></td>
+                            <td>{{$lancamento->Nome}}</td>
+                            <td>{{$lancamento->valor}}</td>
+                            <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
+                            <td><span class="statusEntrada">{{$lancamento->Tipo}}</span></td>
                         </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td><span class="statusSaida">teste</span></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
 
     </div>
     </div>
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ asset('js/filesCharts.js') }}"></script>
-
     <script>
         // Efeito do menu
         let toggle = document.querySelector('.toggle');
@@ -133,17 +131,12 @@
 
         list.forEach((item) =>
             item.addEventListener('mouseover', activeLink));
+
+        
+    
     </script>
+    <script src="{{ asset('js/filesCharts.js') }}"></script>
 </body>
 
-<!--
-    <a href={{ route('selecionaconta') }}> Selecionar conta </a>
-    <br>
-    <a href={{ route('CentroCusto') }}> Cadastrar Centro de custo </a>
-    <br>
-    <a href={{ route('CadastroLancamento') }}> Cadastrar Lançamento </a>
-    <br>
-    <a href="/logout">Sair</a>
-    -->
 
 </html>

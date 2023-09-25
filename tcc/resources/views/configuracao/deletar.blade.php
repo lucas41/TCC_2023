@@ -39,6 +39,12 @@
                                 plataforma</b>.
                         </p>
                     </div>
+                    <form method="post" action="{{ route('enviar.email') }}">
+                        @csrf
+                        <div class="botao-2fa">
+                            <button>Solicitar 2FA</button>
+                        </div>
+                    </form>
                     <form method="post">
                         @csrf
                         @method('DELETE')
@@ -60,12 +66,6 @@
             </div>
         </div>
     </div>
-    <form method="post" action="{{ route('enviar.email') }}">
-        @csrf
-        <div class="botao-2fa">
-            <button>Solicitar 2FA</button>
-        </div>
-    </form>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

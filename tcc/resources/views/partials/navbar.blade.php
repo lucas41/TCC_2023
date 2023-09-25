@@ -20,13 +20,13 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('CentroCusto') }}">
                 <span class="icon"><ion-icon name="calculator-outline"></ion-icon></span>
                 <span class="title">Centro de Custo</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('CadastroLancamento') }}">
                 <span class="icon"><ion-icon name="trending-up-outline"></ion-icon></span>
                 <span class="title">Lançamentos</span>
             </a>
@@ -38,7 +38,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('configurar')}}">
+            <a href="{{route('configurar.get')}}">
                 <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                 <span class="title">Configurações</span>
             </a>
@@ -73,6 +73,30 @@
         </div>
         <!-- CAMPO DO USUARIO -->
         <div class="user">
-            <a href="{{ route('configurar') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>
+            <a href="{{ route('configurar.get') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>
         </div>
     </div>
+
+    <script>
+        // Efeito do menu
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        toggle.onclick = function() {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+        // Aplica e remove a classe hoverd
+        let list = document.querySelectorAll('.navigation li');
+
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>

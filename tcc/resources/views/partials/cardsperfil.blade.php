@@ -1,12 +1,12 @@
 <div>
     <div class="cardOpcoesUsuario">
-        <a href="{{ route('configurar') }}" class="acessarOpcao">
+        <a href="{{ route('configurar.get') }}" class="acessarOpcao">
             <h2>Perfil</h2>
             <p>Modifique as Configurações do seu perfil</p>
         </a>
     </div>
     <div class="cardOpcoesUsuario">
-        <a href="{{ route('seguranca') }}" class="acessarOpcao">
+        <a href="{{ route('seguranca.get') }}" class="acessarOpcao">
             <h2>Segurança da Conta</h2>
             <p>Altere sua senha e ativação do 2FA</p>
         </a>
