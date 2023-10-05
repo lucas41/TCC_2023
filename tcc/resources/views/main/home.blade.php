@@ -27,8 +27,13 @@
         <div class="cardBox">
             <div class="cardPositive">
                 <div>
-                    <div class="numbers">R$ 1500</div>
-                    <div class="cardName">Entrada</div>
+                    @if (session('id_conta_selecionada') == null)
+                    <div class="numbers">R$ 0</div>
+                    <div class="cardName">Sem conta selecionada</div>
+                    @else
+                        <div class="numbers">R$ {{ $conta->entrada }}</div>
+                        <div class="cardName">Entradas na conta {{ $conta->Nome_Conta }}</div>
+                    @endif
                 </div>
                 <div class="iconBx">
                     <ion-icon name="arrow-up-circle-outline"></ion-icon>
@@ -50,8 +55,13 @@
             </div>
             <div class="cardNegative">
                 <div class=>
-                    <div class="numbers">- R$1500</div>
-                    <div class="cardName">Saida</div>
+                    @if (session('id_conta_selecionada') == null)
+                    <div class="numbers"> R$ 0</div>
+                    <div class="cardName">Sem conta selecionada</div>
+                    @else
+                        <div class="numbers">R$ {{ $conta->saida }}</div>
+                        <div class="cardName">Saidas na conta {{ $conta->Nome_Conta }}</div>
+                    @endif
                 </div>
                 <div class="iconBx">
                     <ion-icon name="arrow-down-circle-outline"></ion-icon>

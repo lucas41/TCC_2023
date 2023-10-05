@@ -30,14 +30,21 @@ class LancamentoContabilController extends Controller
         $post->Tipo = $Request->input('Tipo');
         $post->valor = $Request->input('valor');
         $post->conta_bancaria_id  = $Request->input('id_conta_selecionada');
-        $post->centro_custo_id  = $Request->input('centro');
+        if($post->Tipo == 1) {
+            $post->centro_custo_id  = null;
+        }
+        else{
+            $post->centro_custo_id  = $Request->input('centro');
+        }
         $post->save();
         
         CentroCusto::where('id', $post->centro_custo_id)->increment('valatual', $post->valor);
         if($post->Tipo == 1){
             ContaBancaria::where('id', $post->conta_bancaria_id)->increment('saldo', $post->valor);
+            ContaBancaria::where('id', $post->conta_bancaria_id)->increment('entrada', $post->valor);
         }else if($post->Tipo == 2){
             ContaBancaria::where('id', $post->conta_bancaria_id)->decrement('saldo', $post->valor);
+            ContaBancaria::where('id', $post->conta_bancaria_id)->increment('saida', $post->valor);
         }
        
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\ContaBancaria;
 use Illuminate\Support\Facades\Session;
+use App\Models\LancamentoContabil;
 
 class ContaBancariaController extends Controller
 {
@@ -25,8 +26,21 @@ class ContaBancariaController extends Controller
         $post->Agencia = $Request->input('Agencia');
         $post->Numero = $Request->input('Numero');
         $post->saldo = $Request->input('saldo');
+        $post->entrada = $Request->input('saldo');
+        $post->saida = 0;
         $post->user_id = $userId;
         $post->save();
+
+        $contaBancariaId = $post->getKey();
+
+        $lancamentoinicial = new LancamentoContabil();
+        $lancamentoinicial->Nome = "Lançamento inicial";
+        $lancamentoinicial->Tipo = 1;
+        $lancamentoinicial->valor = $Request->input('saldo');
+        $lancamentoinicial->conta_bancaria_id = $contaBancariaId;
+        $lancamentoinicial->centro_custo_id  = null;
+        $lancamentoinicial->save();
+        
         return redirect()->route('selecionaconta');
 
     }

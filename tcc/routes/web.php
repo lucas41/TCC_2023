@@ -60,6 +60,12 @@ Route::group(['prefix' => 'LancamentoContabil', 'middleware' => 'checksession'],
 
 });
 
+Route::group(['prefix' => 'Relatorio', 'middleware' => 'checksession'], function() { //Rotas ligadas aos cadastro e manutenção dos lançamentos
+
+    Route::get('/Relatorio', 'RelatorioController@index')->name('Relatorio');
+
+});
+
 
 Route::get('/logout', function () { //Rota da atividade de logout ( matar a sessão e voltar para as rotas de acesso )
     session()->flush(); // remove todas as variáveis da sessão
