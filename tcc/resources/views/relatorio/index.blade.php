@@ -6,20 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- Botstrap -->
-    <!-- box -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lacamento.css') }}">
 </head>
 
 <body>
 
-
     <div class="container">
         @include('partials.navbar')
+
+        <div class="details">
+            <div class="moviementacoesRecentes">
+                <div class="cardHeader">
+                    <h2>Movimentações</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Mês</td>
+                            <td>Ano</td>
+                            <td>Saldo FInal</td>
+                            <td>Saldo Entrada</td>
+                            <td>Saldo Saida</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($relatorios as $relatorio)
+                            <tr>
+                                <td> {{$relatorio->mes}} </td>
+                                <td>{{$relatorio->ano}}</td>
+                                <td>{{$relatorio->saldo}}</td>
+                                <td>{{$relatorio->entrada}}</td>
+                                <td>{{$relatorio->saida}}</td>   
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -46,6 +71,7 @@
             list.forEach((item) =>
                 item.addEventListener('mouseover', activeLink));
         </script>
+        <script src="https://kit.fontawesome.com/425c447bde.js" crossorigin="anonymous"></script>
         <script src="{{ asset('js/filesCharts.js') }}"></script>
     </div>
 
