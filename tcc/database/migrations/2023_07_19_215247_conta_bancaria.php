@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('Agencia');
             $table->string('Numero');
             $table->decimal('saldo');
+            $table->decimal('entrada');
+            $table->decimal('saida');
             $table->unsignedBigInteger('user_id'); // Chave estrangeira para o campo 'id' da tabela 'users'
             $table->timestamps();
             // Definindo a chave estrangeira

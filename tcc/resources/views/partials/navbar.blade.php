@@ -32,7 +32,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('Relatorio')}}">
                 <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
                 <span class="title">Relatorios</span>
             </a>
