@@ -69,9 +69,9 @@
                         </div>
                     </div>
                     <div class="body-card-conta">
-                        <p>Valor planjeado: {{ $centro->valplanejado}}</p>
-                        <p>Valor Utilizado: {{ $centro->valatual}}</p>
-                        <p>valor atual: {{ $centro->valplanejado - $centro->valatual}}</p>
+                        <p>Valor planjeado R$ {{ $centro->valplanejado}}</p>
+                        <p>Valor Utilizado R$ {{ $centro->valatual}}</p>
+                        <p>valor atual R$ {{ $centro->valplanejado - $centro->valatual}}</p>
                     </div>
                 </div>
             @endforeach

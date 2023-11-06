@@ -106,8 +106,12 @@
                         @foreach ($lancamentos as $lancamento)
                             <tr>
                                 <td>{{ $lancamento->Nome }}</td>
-                                <td>{{ $lancamento->valor }}</td>
-                                <td>{{ $lancamento->valor }}</td>
+                                <td>R$ {{ $lancamento->valor }}</td>
+                                @if($lancamento->centro_custo_id == null)
+                                    <td> Entrada </td>
+                                @else
+                                <td> {{$lancamento->centroCusto->Nome }} </td>
+                                @endif
                                 <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
                                 <td>
                                     @if($lancamento->Tipo == 1)
