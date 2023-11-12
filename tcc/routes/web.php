@@ -50,6 +50,7 @@ Route::group(['prefix' => 'CentroCusto', 'middleware' => 'checksession'], functi
     
     Route::get('/cadastroCentrocusto', 'CentroCustoController@index')->name('CentroCusto');     //Cadastro de conta bancaria formulario
     Route::post('/cadastroCentrocusto', 'CentroCustoController@cadastro')->name('CentroCustocadastro');     //Cadastro de conta bancaria formulario
+    Route::get('/apagarcentroid/{id}', 'CentroCustoController@apagaCentroid')->name('apagarcentroid');  //apaga a conta bancaria seleiconada 
 
 });
 
@@ -57,6 +58,9 @@ Route::group(['prefix' => 'LancamentoContabil', 'middleware' => 'checksession'],
 
     Route::get('/cadastroLancamento', 'LancamentoContabilController@index')->name('CadastroLancamento');
     Route::post('/cadastroLancamento', 'LancamentoContabilController@cadastro')->name('CadastroLancamentofinal');
+    Route::get('/apagalancamentoid/{id}', 'LancamentoContabilController@apagalancamentoid')->name('apagalancamentoid');  //apaga a conta bancaria seleiconada 
+
+    
 
 });
 
@@ -69,5 +73,5 @@ Route::group(['prefix' => 'Relatorio', 'middleware' => 'checksession'], function
 
 Route::get('/logout', function () { //Rota da atividade de logout ( matar a sessão e voltar para as rotas de acesso )
     session()->flush(); // remove todas as variáveis da sessão
-    return redirect()->route('login'); // envia de volta para o login
+    return redirect()->route('index'); // envia de volta para o login
 })->name('logout');

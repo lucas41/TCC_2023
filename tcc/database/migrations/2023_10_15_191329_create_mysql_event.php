@@ -16,14 +16,14 @@ class CreateMysqlEvent extends Migration
                 ON SCHEDULE EVERY 1 MONTH 
                 STARTS CURRENT_TIMESTAMP
                 DO 
-                BEGIN
-                    SET @data_atual = NOW();
-                    SET @mes = MONTH(@data_atual);
-                    SET @ano = YEAR(@data_atual);
-                    INSERT INTO `Relatorio_mensal`(`mes`, `ano`, `saldo`, `entrada`, `saida`, `user_id`)
-                    SELECT @mes, @ano, saldo, entrada, saida, user_id
-                    FROM conta_bancaria;
-                END;
+                BEGIN 
+                    SET @data_atual = NOW(); 
+                    SET @mes = MONTH(@data_atual); 
+                    SET @ano = YEAR(@data_atual); 
+                    INSERT INTO `relatorio_mensal`(`mes`, `ano`, `saldo`, `entrada`, `saida`, `user_id`) 
+                    SELECT @mes, @ano, saldo, entrada, saida, user_id FROM conta_bancaria;
+                    UPDATE `centrocusto` SET `valatual`= 0; 
+                END
             ";
             
             DB::unprepared($eventSql);

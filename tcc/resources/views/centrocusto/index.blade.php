@@ -13,13 +13,18 @@
 
         @include('partials.navbar')
         @include('partials.verificalog')
-
+        <div class="page-title">
+            <h3>Centros de custo</h3>
+        </div>
         <div class="alinhaCards">
             <button id="open-modal" style="all: unset;">
                 <div class="cardOpcoesUsuario">
                     <div class="AdicionarConta">
-                        <h2>Adicionar Centro Custo</h2>
-                        <p>Adicione um novo centro de custo</p>
+                        <div class="card-title">
+                            <h2>Adicionar Centro</h2>
+                            <ion-icon name="add-outline"></ion-icon>
+                        </div>
+                        <p>Adicione as informações</p>
                     </div>
                 </div>
             </button>
@@ -28,7 +33,7 @@
         <div id="fade" class="hide"></div>
         <div id="modal" class="hide">
             <div class="modal-header">
-                <h2>Adicionar Conta</h2>
+                <h2>Adicionar Centro de custo</h2>
                 <button id="close-modal" class="btn-modal-fechar">Fechar</button>
             </div>
             <div class="modal-body">
@@ -48,7 +53,7 @@
                             </div>
                         </div>
                         <div class="botao-forms">
-                            <button>Criar Conta</button>
+                            <button>Criar Centro de Custo</button>
                         </div>
                     </form>
                 </div>
@@ -63,8 +68,8 @@
                         <div class="dropdown">
                             <div class="dots" onclick="toggleDropdown(this)">&#8942;</div>
                             <div class="dropdown-content">
-                                <a href="#">Editar Informações</a>
-                                <a href="{{ route('apagarContaid', ['id' => $centro->id]) }}">Apagar Conta</a>
+                                <a ata-toggle="modal" data-target="#exampleModal" href="#">Editar Informações</a>
+                                <a href="{{ route('apagarcentroid', ['id' => $centro->id]) }}">Apagar Conta</a>
                             </div>
                         </div>
                     </div>
@@ -76,8 +81,6 @@
                 </div>
             @endforeach
         </div>
-        
-
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/lacamento.css') }}">
-
 </head>
 
 <body>
@@ -43,6 +42,7 @@
                                 <label for="name">Nome</label>
                             </div>
                         </div>
+                        <br>
                         <div class="inputForms">
                             <div class="inputGroup">
                                 <input type="number" name="valor" required="" autocomplete="off">
@@ -50,27 +50,23 @@
                             </div>
                         </div>
                         <div>
-                            <input type="hidden" name="id_conta_selecionada" value="{{ session('id_conta_selecionada') }}">
+                            <input type="hidden" name="id_conta_selecionada"
+                                value="{{ session('id_conta_selecionada') }}">
                         </div>
                         <div class="inputForms">
-                            <div class="">
+                            <div class="inputGroup">
                                 <p>Selecione o centro de custo:</p>
-                                <select name="centro" class="">
+                                <select name="centro" class="inputGroup">
                                     @foreach ($centrocusto as $centro)
-                                    <option value={{ $centro->id }}>{{ $centro->Nome }}</option>
+                                        <option value={{ $centro->id }}>{{ $centro->Nome }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <!--<div class="inputForms">
+                        <div class="inputForms">
                             <div class="inputGroup">
-                                <input type="date" required="" autocomplete="off">
-                            </div>
-                        </div>-->
-                        <div class="">
-                            <div class="">
                                 <p>Selecione o tipo de movimentação:</p>
-                                <select name="Tipo" class="">
+                                <select name="Tipo" class="inputGroup">
                                     <option value="0">Entrada/Saída</option>
                                     <option value="1">Entrada</option>
                                     <option value="2">Saída</option>
@@ -107,28 +103,31 @@
                             <tr>
                                 <td>{{ $lancamento->Nome }}</td>
                                 <td>R$ {{ $lancamento->valor }}</td>
-                                @if($lancamento->centro_custo_id == null)
+                                @if ($lancamento->centro_custo_id == null && $lancamento->Tipo == 1)
                                     <td> Entrada </td>
+                                @elseif($lancamento->centro_custo_id == null && $lancamento->Tipo == 3)
+                                    <td> Excluido </td>
                                 @else
-                                <td> {{$lancamento->centroCusto->Nome }} </td>
+                                    <td> {{ $lancamento->centroCusto->Nome }} </td>
                                 @endif
                                 <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
                                 <td>
-                                    @if($lancamento->Tipo == 1)
+                                    @if ($lancamento->Tipo == 1)
                                         <span class="statusEntrada">Entrada</span>
                                     @else
                                         <span class="statusSaida">Saída</span>
                                     @endif
                                 </td>
-                                <td><i class="fa-regular fa-trash-can fa-lg"></i>&nbsp;
-                                <i class="fa-regular fa-pen-to-square fa-lg"></i></td>       
+                                <td><a href="{{ route('apagalancamentoid', ['id' => $lancamento->id]) }}"><i class="fa-regular fa-trash-can fa-lg"></i></a>&nbsp;
+                                    <i class="fa-regular fa-pen-to-square fa-lg"></i>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-
+        {{ $lancamentos->links('pagination.custom') }}
     </div>
     </div>
 

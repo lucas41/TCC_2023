@@ -82,11 +82,11 @@
             <div class="moviementacoesRecentes">
                 <div class="cardHeader">
                     <h2>Movimentações Recentes</h2>
-                    <a href="#" class="btn">Ver tudo</a>
+                    <a href="{{ route('CadastroLancamento') }}" class="btn">Ver tudo</a>
                 </div>
                 @if (session('id_conta_selecionada') == null)
                     <br>
-                    <h2> não há lançamentos cadastrados </h2>
+                    <h2> Não há lançamentos cadastrados </h2>
                 @else
                     <table>
                         <thead>
@@ -99,7 +99,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($lancamentos->sortByDesc('created_at')->take(3) as $lancamento)
+                            @foreach ($lancamentos->sortByDesc('created_at')->take(5) as $lancamento)
                                 <tr>
                                     <td>{{ $lancamento->Nome }}</td>
                                     <td>R$ {{ $lancamento->valor }}</td>

@@ -19,7 +19,7 @@ class LancamentoContabilController extends Controller
         $contaid = session('id_conta_selecionada');
         $user = users::where('id', $iduser)->first();
         $centrocusto = CentroCusto::where('user_id', $iduser)->get();
-        $lancamentos = LancamentoContabil::where('conta_bancaria_id', $contaid)->get();
+        $lancamentos = LancamentoContabil::where('conta_bancaria_id', $contaid)->paginate(10);
         return view('LancamentoContabil/cadastro', compact('centrocusto','user','lancamentos'));
         }
     }
@@ -39,6 +39,7 @@ class LancamentoContabilController extends Controller
         $post->save();
         
         CentroCusto::where('id', $post->centro_custo_id)->increment('valatual', $post->valor);
+
         if($post->Tipo == 1){
             ContaBancaria::where('id', $post->conta_bancaria_id)->increment('saldo', $post->valor);
             ContaBancaria::where('id', $post->conta_bancaria_id)->increment('entrada', $post->valor);
@@ -49,5 +50,31 @@ class LancamentoContabilController extends Controller
        
 
         return redirect()->route('CadastroLancamento');
+    }
+
+    public function apagalancamentoid($id){
+
+        $lancamento = LancamentoContabil::where('id', $id)->first();
+       
+        try {
+            if($lancamento->Tipo == 2){
+                CentroCusto::where('id', $lancamento->centro_custo_id)->decrement('valatual', $lancamento->valor);
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('saldo', $lancamento->valor);
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saida', $lancamento->valor);
+            } 
+            elseif($lancamento->Tipo == 3) {
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('saldo', $lancamento->valor);
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saida', $lancamento->valor);
+            }     
+            elseif($lancamento->Tipo == 1){
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saldo', $lancamento->valor);
+                ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('entrada', $lancamento->valor);
+            }       
+            $lancamento->delete();
+            return redirect()->route('CadastroLancamento')->with('success', 'Lançamento apagadado com sucesso');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('danger', '' . $e->getMessage());
+        }
     }
 }

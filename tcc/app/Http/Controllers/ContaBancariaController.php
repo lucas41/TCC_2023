@@ -66,6 +66,9 @@ class ContaBancariaController extends Controller
     {
         $ContaBancaria = ContaBancaria::where('id', $id)->first();
         try {
+            if (session()->has('id_conta_selecionada')) {
+                session()->forget('id_conta_selecionada');
+            }
             $ContaBancaria->delete();
             return redirect()->route('selecionaconta')->with('success', 'Conta apagada com sucesso');
 

@@ -55,20 +55,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="Ativar-2FA">
-                    <div>
-                        <h2>Adicionar 2FA</h2>
-                        <p>Olá usuário,</p>
-                        <p>Estamos sempre comprometidos em garantir a segurança dos seus dados e da sua conta em nossa
-                            aplicação. Para fortalecer ainda mais a proteção da sua conta, estamos introduzindo a
-                            Autenticação de Dois Fatores (2FA).
-                        </p>
-                        <p>A Autenticação de Dois Fatores é um recurso de segurança que adiciona uma camada extra de
-                            proteção à sua conta. Ao ativá-la, você precisará fornecer não apenas sua senha, mas também
-                            um código único gerado pelo seu dispositivo pessoal para fazer login na aplicação.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

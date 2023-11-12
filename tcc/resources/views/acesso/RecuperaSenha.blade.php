@@ -25,7 +25,6 @@
         <div class="form login">
             <div class="form-content">
                 <header>Esqueci minha senha</header>
-
                 <!-- Form -->
                 <form method="POST">
                     @csrf

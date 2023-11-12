@@ -497,7 +497,48 @@ body {
     color: var(--white)
   }
 
+  .page-title h3{ 
+    font-size: 30px;
+    margin: 3rem;
+    position: absolute;
+}
+
+.card-title{
+    display: flex;
+    align-items: center;
+}
+
+.card-title ion-icon{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
 /* Responsividade */
+
+/* Responsividade */
+@media(max-width: 1500px){
+    .card-Conta-User{
+        width: 480px;
+    }
+}
+
+@media(max-width: 1380px){
+    .card-Conta-User{
+        width: 400px;
+    }
+}
+
+@media(max-width: 1200px){
+    .card-Conta-User{
+        width: 350px;
+    }
+}
+
+@media(max-width: 1100px){
+    .card-Conta-User{
+        width: 300px;
+    }
+}
 
 @media (max-width: 991px) {
     .formularioPerfil {
@@ -519,4 +560,54 @@ body {
     }
 }
 
+@media (max-width: 680px) {
+    .AdicionarConta p{
+        display: none;
+    }
+    
+    .cardOpcoesUsuario {
+        width: 300px;
+        height: 70px;
+    }
+    
+    .card-Conta-User {
+        width: 260px;
+    }
+}
 
+@media (max-width: 610px){
+    .cardOpcoesUsuario {
+        width: 60px;
+        height: 58px;
+        border-radius: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card-title h2{
+        display: none;
+    }
+    
+    .card-title ion-icon{
+        margin-left: 0px;
+    }
+    
+    .card-Conta-User {
+        width: 100%;
+    }
+
+    .listar-contas {
+        gap: 20px;
+      }
+    
+    }
+    
+@media (max-width: 430px){
+    
+    .listar-contas {
+        display: block; 
+    }
+
+}

@@ -15,4 +15,9 @@ class CentroCusto extends Model
     {
         return $this->belongsTo(ContaBancaria::class, 'conta_bancaria_id'); 
     }
+
+    public function LancamentoContabil() 
+    {
+        return $this->hasone(LancamentoContabil::class, 'centro_custo_id');
+    }
 }

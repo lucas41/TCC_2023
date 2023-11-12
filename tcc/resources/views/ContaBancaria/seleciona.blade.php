@@ -13,13 +13,18 @@
 
         @include('partials.navbar')
         @include('partials.verificalog')
-
+        <div class="page-title">
+            <h3>Minhas Contas</h3>
+        </div>
         <!-- Formulario aqui-->
         <div class="alinhaCards">
             <button id="open-modal" style="all: unset;">
                 <div class="cardOpcoesUsuario">
                     <div class="AdicionarConta">
-                        <h2>Adicionar Conta</h2>
+                        <div class="card-title">
+                            <h2>Adicionar Conta</h2>
+                            <ion-icon name="add-outline"></ion-icon>
+                        </div>
                         <p>Entre com as informações da sua conta</p>
                     </div>
                 </div>

@@ -20,6 +20,9 @@
     <section class="global forms">
         <div class="form login">
             <div class="form-content">
+                <center>
+                    <h2> Insira uma nova senha </h2>
+                </center>
                 <form method="POST">
                     @csrf
                     <div class="field input-field">

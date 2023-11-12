@@ -64,13 +64,7 @@
         <div class="toggle">
             <ion-icon name="menu-outline"></ion-icon>
         </div>
-        <!-- CAMPO DE BUSCA-->
-        <div class="search">
-            <label for="">
-                <input type="text" placeholder="Pesquisar">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
-        </div>
+
         <!-- CAMPO DO USUARIO -->
         <div class="user">
             <a href="{{ route('configurar.get') }}" ><img src="{{ asset('img/users/'.$user->foto) }}" alt=""></a>

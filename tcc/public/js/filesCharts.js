@@ -36,7 +36,6 @@ new Chart(first, {
 });
 
 const mixedChart = new Chart(second, {
-
   data: {
     datasets: [{
       type: 'line',
@@ -45,7 +44,7 @@ const mixedChart = new Chart(second, {
       showLine: false,
       borderColor: 'rgb(0, 0, 0)',
       backgroundColor: 'rgb(0, 0, 0)',
-      borderWidth: 10,
+      borderWidth: 5,
     }, {
       type: 'bar',
       label: 'Valor Gasto',
@@ -69,9 +68,7 @@ const mixedChart = new Chart(second, {
 },
 options: {
   responsive: true,
-  indexAxis: 'y',
 }
-
 });
 
   /*const mixedChart = new Chart(second, {
