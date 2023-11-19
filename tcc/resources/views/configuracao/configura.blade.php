@@ -21,12 +21,12 @@
         <div>
             <div class="cardFoto">
                 <img src="{{ asset('img/users/' . $user->foto) }}" alt="Foto Perfil">
-                <div>
-                    <h2>Trocar foto de usuario</h2>
-                </div>
                 <form method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" id="foto" name="foto" accept="image/png, image/jpeg" />
+                    <div class="mobileFoto">
+                        <h2>Trocar foto de usuario</h2>
+                        <input type="file" id="foto" name="foto" accept="image/png, image/jpeg" />
+                    </div>
             </div>
             <div class="formularioPerfil">
                 <div>
@@ -45,7 +45,7 @@
                         <input type="email" required="" name="email" autocomplete="off" value="{{ $user->email }}">
                         <label for="name">e-mail</label>
                     </div>
-                    <br>
+                    
                     <div class="inputGroup">
                         <input type="text"  autocomplete="off" name="endereco" value="{{ $user->endereco }}">
                         <label for="name">Endereço</label>

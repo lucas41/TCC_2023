@@ -14,7 +14,7 @@
         @include('partials.navbar')
         @include('partials.verificalog')
         <div class="page-title">
-            <h3>Centros de custo</h3>
+            <h3>Centros de Custo</h3>
         </div>
         <div class="alinhaCards">
             <button id="open-modal" style="all: unset;">
@@ -75,8 +75,8 @@
                     </div>
                     <div class="body-card-conta">
                         <p>Valor planjeado R$ {{ $centro->valplanejado}}</p>
-                        <p>Valor Utilizado R$ {{ $centro->valatual}}</p>
-                        <p>valor atual R$ {{ $centro->valplanejado - $centro->valatual}}</p>
+                        <p>Valor utilizado R$ {{ $centro->valatual}}</p>
+                        <p>Valor atual R$ {{ $centro->valplanejado - $centro->valatual}}</p>
                     </div>
                 </div>
             @endforeach

@@ -29,7 +29,7 @@ body {
     width: 100%;
 }
 
-.navigation{
+.navigation {
     position: fixed;
     width: 300px;
     height: 100%;
@@ -156,6 +156,7 @@ body {
     width: calc(100% - 80px);
     left: 80px;
 }
+
 /* EFEITO DO MENU LATERAL */
 
 .topbar {
@@ -205,7 +206,7 @@ body {
     top: 0;
     left: 10px;
     font-size: 1.2em;
-} 
+}
 
 .user {
     position: relative;
@@ -231,12 +232,12 @@ body {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
 }
 
 /* CSS DO MODEL */
-.alinhaCards { 
+.alinhaCards {
     display: flex;
     justify-content: flex-end;
     margin: 20px 40px;
@@ -250,7 +251,7 @@ body {
 
 .cardOpcoesUsuario {
     border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     width: 400px;
     padding: 20px 40px;
     height: 80px;
@@ -260,7 +261,7 @@ body {
 
 /* MODAL AQUI */
 
-#fade, 
+#fade,
 #modal {
     transition: .5s;
     opacity: 1;
@@ -273,7 +274,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 5;
 }
 
@@ -350,7 +351,7 @@ body {
     margin: 1em 0 1em 0;
     position: relative;
 }
-  
+
 .inputGroup input,
 .inputGroup select {
     font-size: 100%;
@@ -361,7 +362,7 @@ body {
     border-radius: 20px;
     width: 100%;
 }
-  
+
 .inputGroup label {
     font-size: 100%;
     position: absolute;
@@ -372,7 +373,7 @@ body {
     transition: all 0.3s ease;
     color: rgb(100, 100, 100);
 }
-  
+
 .inputGroup :is(input:focus, input:valid)~label {
     transform: translateY(-50%) scale(.9);
     margin: 0em;
@@ -380,7 +381,7 @@ body {
     padding: 0.4em;
     background-color: #e8e8e8;
 }
-  
+
 .inputGroup :is(input:focus, input:valid) {
     border-color: rgb(150, 150, 200);
 }
@@ -411,7 +412,7 @@ body {
 
 
 
-/* CSS dos Ultimos items*/ 
+/* CSS dos Ultimos items*/
 
 .details {
     position: relative;
@@ -429,7 +430,7 @@ body {
     min-height: 50px;
     background: var(--white);
     padding: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
 
@@ -453,7 +454,7 @@ body {
     border-radius: 6px;
 }
 
-.details .table{
+.details .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
@@ -465,7 +466,7 @@ body {
 
 .details .moviementacoesRecentes thead tr {
     color: var(--black1);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     font-weight: 600;
 }
 
@@ -513,55 +514,143 @@ body {
 }
 
 
-/* Deixando responsivo */
-@media (max-width: 991px) {
-    .graphBox{
+/* Responsividade */
+
+@media (max-width: 600px) {
+    .texto, .texto2{
+        display: none;
+    }
+    .graphBox {
         grid-template-columns: 1fr;
         height: auto;
     }
+
     .navigation {
         left: -300px;
     }
+
+    .formularioPerfil {
+        left: -300px;
+    }
+
     .navigation.active {
         width: 300px;
         left: 0;
     }
-    .main{
+
+    .main {
         width: 100%;
         left: 0;
     }
+
     .main.active {
         left: 300px;
     }
-    .cardBox{
-        grid-template-columns: repeat(2,1fr);
+
+    .cardBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cardOpcoesUsuario {
+        width: 60px;
+        height: 58px;
+        border-radius: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-title h2 {
+        display: none;
+    }
+
+    .card-title ion-icon {
+        margin-left: 0px;
+    }
+
+    .card-Conta-User {
+        width: 100%;
+    }
+
+    .listar-contas {
+        gap: 20px;
+    }
+
+
+    .cardHeader {
+        font-size: 10px;
+    }
+
+    table {
+        font-size: 10px;
+        justify-content: center;
+    }
+
+    .date{
+        display: none;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .statusEntrada {
+        display: none;
+    }
+
+    .statusSaida {
+        display: none;
+    }
+
+    .icon-entrada {
+        padding: 8px;
+        /* Ajuste conforme necessário */
+        background-color: var(--green);
+        color: var(--white);
+        border-radius: 20px;
+        /* Ajuste conforme necessário para obter bordas mais arredondadas */
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-block;
+        /* Para que a borda arredondada funcione corretamente */
+        text-align: center;
+        /* Centraliza o conteúdo dentro do botão */
+        cursor: pointer;
+        /* Adiciona um cursor indicando que é clicável */
+    }
+
+    .icon-saida {
+        padding: 8px;
+        /* Ajuste conforme necessário */
+        background-color: var(--red1);
+        color: var(--white);
+        border-radius: 20px;
+        /* Ajuste conforme necessário para obter bordas mais arredondadas */
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-block;
+        /* Para que a borda arredondada funcione corretamente */
+        text-align: center;
+        /* Centraliza o conteúdo dentro do botão */
+        cursor: pointer;
+        /* Adiciona um cursor indicando que é clicável */
     }
 }
 
-@media (max-width: 480px) {
-    .cardBox {
-        grid-template-columns: repeat(1,1fr);
-    }
-    .cardHeader h2 {
-        font-size: 20px;
-    }
-    .navigation {
-        width: 100%;
-        left: -100%;
-        z-index: 1000;
-    }
-    .navigation.active {
-        width: 100%;
-        left: 0;
-    }
-    .toggle {
-        z-index: 10001;
-    }
-    .main.active .toggle {
-        position: fixed;
-        right: 0;
-        left: initial;
-        color: var(--white);
+/* Regras para telas maiores ou iguais a 600 pixels */
+@media (min-width: 601px) {
+    .icon-entrada {
+        display: none;
     }
 
+    .icon-saida {
+        display: none;
+    }
+
+    .add{
+        display: none;
+    }
 }

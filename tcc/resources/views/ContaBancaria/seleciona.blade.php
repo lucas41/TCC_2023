@@ -95,9 +95,9 @@
                         </div>
                     </div>
                     <div class="body-card-conta">
-                        <p>{{ $conta->Nome_banco }}</p>
-                        <p>{{ $conta->Agencia }}</p>
-                        <p>{{ $conta->Numero }}</p>
+                        <p>Banco: {{ $conta->Nome_banco }}</p>
+                        <p>Agencia: {{ $conta->Agencia }}</p>
+                        <p>Numero da conta: {{ $conta->Numero }}</p>
                     </div>
                 </div>
             @endforeach

@@ -479,7 +479,7 @@ body {
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
-}
+}   
 
     @media(max-width: 1500px){
         .card-Conta-User{
@@ -556,5 +556,65 @@ body {
         }
         .cardBox{
             grid-template-columns: repeat(1,1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .cardHeader {
+            font-size: 10px;
+        }
+
+        table {
+            font-size: 10px;
+            justify-content: center;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .statusEntrada {
+            display: none;
+        }
+
+        .statusSaida {
+            display: none;
+        }
+
+        .icon-entrada {
+            padding: 8px; /* Ajuste conforme necessário */
+            background-color: var(--green);
+            color: var(--white);
+            border-radius: 20px; /* Ajuste conforme necessário para obter bordas mais arredondadas */
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block; /* Para que a borda arredondada funcione corretamente */
+            text-align: center; /* Centraliza o conteúdo dentro do botão */
+            cursor: pointer; /* Adiciona um cursor indicando que é clicável */
+        }
+
+        .icon-saida{
+            padding: 8px; /* Ajuste conforme necessário */
+            background-color: var(--red1);
+            color: var(--white);
+            border-radius: 20px; /* Ajuste conforme necessário para obter bordas mais arredondadas */
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block; /* Para que a borda arredondada funcione corretamente */
+            text-align: center; /* Centraliza o conteúdo dentro do botão */
+            cursor: pointer; /* Adiciona um cursor indicando que é clicável */
+        }
+    }
+
+    /* Regras para telas maiores ou iguais a 600 pixels */
+    @media (min-width: 601px) {
+        .icon-entrada {
+            display: none;
+        }
+
+        .icon-saida {
+            display: none;
         }
     }

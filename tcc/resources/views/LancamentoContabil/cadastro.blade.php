@@ -10,23 +10,24 @@
 
 <body>
     <div class="container">
-
         @include('partials.navbar')
         @include('partials.verificalog')
-
         <!-- Model -->
         <div class="alinhaCards">
             <button id="open-modal" style="all: unset;">
                 <div class="cardOpcoesUsuario">
                     <div class="AdicionarConta">
-                        <h2>Adicionar Movimentações</h2>
-                        <p>Entre com as entradas e saídas aqui!</p>
+                        <div class="card-title">
+                            <h2 class="texto" >Adicionar Movimentação</h2>
+                            <ion-icon class="add" name="add-outline"></ion-icon>
+                        </div>
+                        <p class="texto2">Entre com as entradas e saídas aqui!</p>
                     </div>
                 </div>
             </button>
         </div>
-
         <div id="fade" class="hide"></div>
+
         <div id="modal" class="hide">
             <div class="modal-header">
                 <h2>Nova movimentação</h2>
@@ -93,7 +94,7 @@
                             <td>Nome</td>
                             <td>Valor</td>
                             <td>Centro</td>
-                            <td>Data</td>
+                            <td class="date">Data</td>
                             <td>Entrada/Saída</td>
                             <td>Opções</td>
                         </tr>
@@ -110,15 +111,18 @@
                                 @else
                                     <td> {{ $lancamento->centroCusto->Nome }} </td>
                                 @endif
-                                <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
+                                <td class="date">{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
                                 <td>
                                     @if ($lancamento->Tipo == 1)
                                         <span class="statusEntrada">Entrada</span>
-                                    @else
-                                        <span class="statusSaida">Saída</span>
+                                        <span class="icon-entrada"> + </<span>
+                                        @else
+                                            <span class="statusSaida">Saída</span>
+                                            <span class="icon-saida"> - </span>
                                     @endif
                                 </td>
-                                <td><a href="{{ route('apagalancamentoid', ['id' => $lancamento->id]) }}"><i class="fa-regular fa-trash-can fa-lg"></i></a>&nbsp;
+                                <td><a href="{{ route('apagalancamentoid', ['id' => $lancamento->id]) }}"><i
+                                            class="fa-regular fa-trash-can fa-lg"></i></a>&nbsp;
                                     <i class="fa-regular fa-pen-to-square fa-lg"></i>
                                 </td>
                             </tr>

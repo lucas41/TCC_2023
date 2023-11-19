@@ -17,7 +17,6 @@
         var centrocusto = <?php echo json_encode($centrocusto); ?>;
     </script>
 </head>
-
 <body>
     <div class="container">
         @include('partials.navbar')
@@ -66,7 +65,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Graficos -->
         <div class="graphBox">
             <div class="box">
@@ -108,14 +106,16 @@
                                         <td> Entrada </td>
                                     @else
                                         <td>
-                                           {{ $lancamento->centroCusto->Nome }}
+                                            {{ $lancamento->centroCusto->Nome }}
                                         </td>
                                     @endif
                                     <td>
                                         @if ($lancamento->Tipo == 1)
                                             <span class="statusEntrada">Entrada</span>
+                                            <span class="icon-entrada"> + </<span>
                                         @else
                                             <span class="statusSaida">Saída</span>
+                                            <span class="icon-saida"> - </span>
                                         @endif
                                     </td>
                                 </tr>
