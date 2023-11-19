@@ -12,7 +12,7 @@
         @include('partials.navbar')
         @include('partials.verificalog')
         <div class="page-title">
-            <h3>Minhas Contas</h3>
+            <h3>Minhas Contas teste</h3>
         </div>
         <!-- Formulario aqui-->
         <div class="alinhaCards">
