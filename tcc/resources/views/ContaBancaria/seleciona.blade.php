@@ -14,7 +14,7 @@
         @include('partials.navbar')
         @include('partials.verificalog')
         <div class="page-title">
-            <h3>Minhas Contas</h3>
+            <h3>Minhas Contas teste</h3>
         </div>
         <!-- Formulario aqui-->
         <div class="alinhaCards">
@@ -89,7 +89,7 @@
                             <div class="dropdown-content">
                                 <a href="{{ route('selecionarContaid', ['id' => $conta->id]) }}">Selecionar
                                     Conta</a>
-                                    <a>Editar Informações</a>
+                                    <a href="#" id="openModalLink">Abrir Modal</a>
                                 <a href="{{ route('apagarContaid', ['id' => $conta->id]) }}">Apagar Conta</a>
                             </div>
                         </div>
@@ -103,14 +103,47 @@
             @endforeach
         </div>
 
+      
+
+        <!-- O modal -->
+        <div id="myModal">
+          <p>Conteúdo do modal. Isso pode incluir formulários, texto, etc.</p>
+          <button id="closeModalBtn">Fechar Modal</button>
+        </div>
+      
+        <!-- Overlay para escurecer o fundo quando o modal estiver aberto -->
+        <div id="overlay"></div>
+
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
         <script src="{{ asset('js/contaBancaria.js') }}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+   var openModalLink = document.getElementById("openModalLink");
+   var closeModalBtn = document.getElementById("closeModalBtn");
+   var myModal = document.getElementById("myModal");
+   var overlay = document.getElementById("overlay");
 
+   // Função para abrir o modal
+   function openModal() {
+     myModal.style.display = "block";
+     overlay.style.display = "block";
+   }
+
+   // Função para fechar o modal
+   function closeModal() {
+     myModal.style.display = "none";
+     overlay.style.display = "none";
+   }
+
+   // Adiciona eventos aos elementos
+   openModalLink.addEventListener("click", openModal);
+   closeModalBtn.addEventListener("click", closeModal);
+ });
+     </script>
 
 </body>
 
