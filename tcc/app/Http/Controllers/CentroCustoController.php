@@ -50,4 +50,20 @@ class CentroCustoController extends Controller
 
     }
 
+    public function edit($id)
+    {
+        $Centrocusto = CentroCusto::find($id);
+        return view('CentroCusto.edit', compact('Centrocusto'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $Centrocusto = CentroCusto::find($id);
+        $Centrocusto->Nome = $request->input('Nome');
+        $Centrocusto->valplanejado = $request->input('valplanejado');
+        $Centrocusto->save();
+
+        return redirect()->route('CentroCusto'); // redirecione para onde desejar após a edição
+    }
+
 }

@@ -80,4 +80,22 @@ class ContaBancariaController extends Controller
 
     }
 
+    public function edit($id)
+    {
+        $conta = ContaBancaria::find($id);
+        return view('contas.edit', compact('conta'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $conta = ContaBancaria::find($id);
+        $conta->Nome_Conta = $request->input('Nome_Conta');
+        $conta->Nome_banco = $request->input('Nome_banco');
+        $conta->Agencia = $request->input('Agencia');
+        $conta->Numero = $request->input('Numero');
+        $conta->save();
+
+        return redirect()->route('selecionaconta'); // redirecione para onde desejar após a edição
+    }
+
 }

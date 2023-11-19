@@ -43,6 +43,8 @@ Route::group(['prefix' => 'ContaBancaria', 'middleware' => 'checksession'], func
     Route::post('/selecionaconta', 'ContaBancariaController@CadastrarConta')->name('selecionacontapost'); // visualizado de contas bancarias cadastradas 
     Route::get('/selecionaconta/{id}', 'ContaBancariaController@selecionarContaid')->name('selecionarContaid'); // selecionar a conta bancaria que deseja trabalhar na home
     Route::get('/apagarContaid/{id}', 'ContaBancariaController@apagaContaid')->name('apagarContaid');  //apaga a conta bancaria seleiconada 
+    Route::get('/contas/{id}/edit', 'ContaBancariaController@edit')->name('contas.edit');
+    Route::post('/contas/{id}/update', 'ContaBancariaController@update')->name('contas.update');
 
 });
 
@@ -51,6 +53,8 @@ Route::group(['prefix' => 'CentroCusto', 'middleware' => 'checksession'], functi
     Route::get('/cadastroCentrocusto', 'CentroCustoController@index')->name('CentroCusto');     //Cadastro de conta bancaria formulario
     Route::post('/cadastroCentrocusto', 'CentroCustoController@cadastro')->name('CentroCustocadastro');     //Cadastro de conta bancaria formulario
     Route::get('/apagarcentroid/{id}', 'CentroCustoController@apagaCentroid')->name('apagarcentroid');  //apaga a conta bancaria seleiconada 
+    Route::get('/CentroCusto/{id}/edit', 'CentroCustoController@edit')->name('CentroCusto.edit');
+    Route::post('/CentroCusto/{id}/update', 'CentroCustoController@update')->name('CentroCusto.update');
 
 });
 
