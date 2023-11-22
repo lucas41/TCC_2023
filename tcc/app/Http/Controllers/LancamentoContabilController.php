@@ -77,4 +77,43 @@ class LancamentoContabilController extends Controller
             return redirect()->back()->with('danger', '' . $e->getMessage());
         }
     }
+
+    public function edit($id)
+    {
+        $lancamento = LancamentoContabil::find($id);
+        return view('contas.edit', compact('conta'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $lancamento = LancamentoContabil::find($id);
+        $valorOriginal = $lancamento->valor;
+        $lancamento->Nome = $request->input('Nome');
+        $lancamento->valor = $request->input('Valor');
+        $lancamento->centro_custo_id = $request->input('centro');      
+        $lancamento->save();
+
+
+
+        $diferencaValor = $lancamento->valor - $valorOriginal;
+
+        // Atualize os valores do centro de custo, se aplicável
+        if ($lancamento->Tipo == 2) {
+            CentroCusto::where('id', $lancamento->centro_custo_id)->update(['valatual' => \DB::raw("valatual + $diferencaValor")]);
+        }
+        // Atualize os saldos da conta bancária
+        if ($lancamento->Tipo == 1) {
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saldo', $valorOriginal);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('entrada', $valorOriginal);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('saldo', $lancamento->valor);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('entrada', $lancamento->valor);
+        } else if ($lancamento->Tipo == 2) {
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('saldo', $valorOriginal);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saida', $valorOriginal);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->decrement('saldo', $lancamento->valor);
+            ContaBancaria::where('id', $lancamento->conta_bancaria_id)->increment('saida', $lancamento->valor);
+        }
+    
+        return redirect()->route('CadastroLancamento'); // redirecione para onde desejar após a edição
+    }
 }

@@ -63,8 +63,8 @@ Route::group(['prefix' => 'LancamentoContabil', 'middleware' => 'checksession'],
     Route::get('/cadastroLancamento', 'LancamentoContabilController@index')->name('CadastroLancamento');
     Route::post('/cadastroLancamento', 'LancamentoContabilController@cadastro')->name('CadastroLancamentofinal');
     Route::get('/apagalancamentoid/{id}', 'LancamentoContabilController@apagalancamentoid')->name('apagalancamentoid');  //apaga a conta bancaria seleiconada 
-
-    
+    Route::get('/lancamento/{id}/edit', 'LancamentoContabilController@edit')->name('lancamento.edit');
+    Route::post('/lancamento/{id}/update', 'LancamentoContabilController@update')->name('lancamento.update');
 
 });
 
