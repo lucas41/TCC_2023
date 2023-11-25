@@ -11,20 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('registro') }}">Registro</a>
-                </li>
-            </ul>
-        </div>
-    </nav>-->
-    
+<body>    
     <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -51,10 +38,10 @@
                 <div class="col-xs-12">
                     <h1 class=text-center> Bem vindo </h1>
                     <p class="lead text-center">
-                    <h4>Aqui inserimos um texto ou logo do estabelecimento ou uma frase marcante que sabe</h4>
+                    <h4>ao nosso site de controle financeiro! Otimize suas finanças com centro de custos personalizados para alcançar seus objetivos com facilidade.</h4>
                     </p>
                     <br>
-                    <a href="#" class=" btn btn-success"> Venha conferir </a>
+                    <a href="{{ route('registro') }}" class=" btn btn-success"> Venha conferir </a>
                 </div>
             </div>
         </div>
@@ -66,53 +53,40 @@
             <div class="row">
                 <div class="col-xs-12">
                     <br>
-                    <h1 class="text-center"> "But I must explain to you how all this mistaken idea of denouncing
-                        pleasure and praising pain was born and I will gi </h1>
-                    <p class="text-center"> "But I must explain to you how all this mistaken idea of denouncing pleasure
-                        and praising pain was born and I will give you a complete account of the system, and expound the
-                        actual teachings of the great explorer of the truth, the master-builder of human happiness. No
-                        one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who
-                        do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-                        Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it
-                        is pain, but because occasionally circumstances occur in which toil and pain can procure him
-                        some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
-                        exercise, except to obtain some advantage from it? But who has any right to find fault with a
-                        man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain
-                        that produces no resultant pleasure?"</p>
+                    <h1 class="text-center">Transforme seus sonhos em realidade: domine suas finanças com nosso controle personalizado. Seu futuro financeiro começa aqui!</h1>
+                    <br>
+                    <p class="text-center"> Descubra a liberdade financeira em suas mãos! Nosso site oferece a praticidade de controle tanto no computador quanto no celular, permitindo que você gerencie suas finanças de qualquer lugar. Com centros de custo personalizados, você pode categorizar despesas de acordo com suas necessidades, ganhando clareza e controle. Além disso, a geração automática de relatórios mensais simplifica o acompanhamento do seu progresso, colocando você no caminho certo para alcançar seus objetivos. Transforme sua relação com o dinheiro - comece agora!</p>
                 </div>
             </div>
             <br>
             <div class="row text-center">
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img style="width: 300px; height: 400px;" src="{{ asset('img/3.jpg') }}">
+                        <img style="width: 300px; height: 300px;" src="{{ asset('img/3.jpg') }}">
                         <br>
                         <div class="caption text-center">
                             <br>
-                            <h3> Figura 1 </h3>
-                            <p> Desc figura 1 </p>
+                            <h3> Gerenciamento Prático </h3>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img style="width: 300px; height: 400px;" src="{{ asset('img/4.jpg') }}">
+                        <img style="width: 300px; height: 300px;" src="{{ asset('img/4.jpg') }}">
                         <div class="caption text-center">
                             <br>
-                            <h3> Figura 2 </h3>
-                            <p> Desc figura 2 </p>
+                            <h3> Centros de custo </h3>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img style="width: 300px; height: 400px;" src="{{ asset('img/5.jpg') }}">
+                        <img style="width: 300px; height: 300px;" src="{{ asset('img/5.jpg') }}">
                         <div class="caption text-center">
                             <br>
-                            <h3> Figura 3 </h3>
-                            <p> Desc figura 3 </p>
+                            <h3> Acesse em qualquer lugar </h3>
                         </div>
                     </div>
                 </div>
@@ -125,27 +99,14 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-xs-12">
-                    <h1 class=text-center> Venha conferir </h1>
-                    <p class="lead text-center"> But I must explain to you how all this mistaken idea of denouncing
-                        pleasure and praising pain was born and I will give you a complete account of the system, and
-                        expound the </p>
-                    <button type="button" class="btn btn-success" style="width: 200px; border: 10%;"> Acesso
-                    </button>
+                    <p class="lead text-center"> Obrigado por escolher nosso site para aprimorar sua gestão financeira. Estamos aqui para apoiar seus objetivos e proporcionar uma jornada tranquila rumo ao sucesso financeiro. Conte conosco para fornecer as ferramentas necessárias que o ajudarão a prosperar.
+                    </p>
+                    <!--<button type="button" class="btn btn-success" style="width: 200px; border: 10%;"> Acesso
+                    </button>-->
                 </div>
             </div>
         </div>
     </section>
-    <section class="footer-site">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="text-center">todos os direitos reservados </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
