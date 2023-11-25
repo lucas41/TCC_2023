@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Relatorio_mensal', function (Blueprint $table) {
+        Schema::create('relatorio_mensal', function (Blueprint $table) {
         $table->string('mes');
         $table->string('ano');
         $table->decimal('saldo');
