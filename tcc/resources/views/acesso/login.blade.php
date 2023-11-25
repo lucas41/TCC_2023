@@ -36,7 +36,6 @@
 
                     <div class="field input-field">
                         <input type="password" name="senha" placeholder="Password" class="password">
-                        <i class="bx bx-hide eye-icon"></i>
                     </div>
 
                     <div class="form-link">

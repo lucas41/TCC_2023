@@ -17,7 +17,8 @@ return new class extends Migration
         $table->decimal('saldo');
         $table->decimal('entrada');
         $table->decimal('saida');
-        $table->decimal('user_id');
+        $table->string('user_id');
+        $table->string('conta_id');
         });
     }
 

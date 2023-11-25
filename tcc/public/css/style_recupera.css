@@ -137,3 +137,11 @@ body {
     margin-bottom: 15px;
 }
 
+@media(max-width: 600px) {
+    .container {
+        width: 90%; /* ou qualquer outra largura desejada */
+    max-width: 400px; /* Adicione uma largura máxima para garantir responsividade */
+    margin: 0 auto; /* Centraliza o container na página */
+    }
+}
+

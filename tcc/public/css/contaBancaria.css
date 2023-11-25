@@ -22,6 +22,30 @@ body {
     overflow-x: hidden;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    /* Aumentado o índice Z para sobrepor o overlay */
+}
+
+/* Estilos adicionais para escurecer o fundo quando o modal estiver aberto */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
 /* COMEÇO DO MENU LATERAL */
 
@@ -30,7 +54,7 @@ body {
     width: 100%;
 }
 
-.navigation{
+.navigation {
     position: fixed;
     width: 300px;
     height: 100%;
@@ -157,6 +181,7 @@ body {
     width: calc(100% - 80px);
     left: 80px;
 }
+
 /* EFEITO DO MENU LATERAL */
 
 .topbar {
@@ -206,7 +231,7 @@ body {
     top: 0;
     left: 10px;
     font-size: 1.2em;
-} 
+}
 
 .user {
     position: relative;
@@ -225,9 +250,10 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
 /* INICIO CSS FORM */
 
-.alinhaCards { 
+.alinhaCards {
     display: flex;
     justify-content: flex-end;
     margin: 20px 40px;
@@ -241,7 +267,7 @@ body {
 
 .cardOpcoesUsuario {
     border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     width: 400px;
     padding: 20px 40px;
     height: 80px;
@@ -251,19 +277,19 @@ body {
 
 
 .alinhaCards .cardOpcoesUsuario:hover {
-    background: var(--blue) ;
+    background: var(--blue);
 }
 
 .alinhaCards .cardOpcoesUsuario:hover,
 .alinhaCards .cardOpcoesUsuario:hover p,
 .alinhaCards .cardOpcoesUsuario:hover h2 {
-    color: var(--white) ;
+    color: var(--white);
 }
 
 
 /* MODAL AQUI */
 
-#fade, 
+#fade,
 #modal {
     transition: .5s;
     opacity: 1;
@@ -276,7 +302,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 5;
 }
 
@@ -341,9 +367,9 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     margin-top: 7px;
-    padding: 15px; 
+    padding: 15px;
 }
 
 .texto-deleta p {
@@ -369,7 +395,7 @@ body {
     margin: 1em 0 1em 0;
     position: relative;
 }
-  
+
 .inputGroup input {
     font-size: 100%;
     padding: 0.8em;
@@ -379,7 +405,7 @@ body {
     border-radius: 20px;
     width: 100%;
 }
-  
+
 .inputGroup label {
     font-size: 100%;
     position: absolute;
@@ -390,7 +416,7 @@ body {
     transition: all 0.3s ease;
     color: rgb(100, 100, 100);
 }
-  
+
 .inputGroup :is(input:focus, input:valid)~label {
     transform: translateY(-50%) scale(.9);
     margin: 0em;
@@ -398,7 +424,7 @@ body {
     padding: 0.4em;
     background-color: #e8e8e8;
 }
-  
+
 .inputGroup :is(input:focus, input:valid) {
     border-color: rgb(150, 150, 200);
 }
@@ -430,13 +456,13 @@ body {
 
 .listar-contas {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin: 20px 40px;
 }
 
 .card-Conta-User {
     border-radius: 20px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     width: 525px;
     padding: 20px 40px;
     height: 130px;
@@ -462,9 +488,9 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dots {
+}
+
+.dots {
     width: 20px;
     height: 20px;
     background-color: var(--white);
@@ -473,9 +499,9 @@ body {
     line-height: 20px;
     cursor: pointer;
     font-size: 27px;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     border-radius: 10px;
     position: absolute;
@@ -483,40 +509,135 @@ body {
     min-width: 120px;
     padding: 8px;
     z-index: 1;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     display: block;
     padding: 8px;
     text-decoration: none;
     color: var(--black1);
-  }
-  
-  .dropdown-content a:hover {
+}
+
+.dropdown-content a:hover {
     background-color: var(--blue);
     color: var(--white)
-  }
+}
+
+.page-title h3 {
+    font-size: 30px;
+    margin: 3rem;
+    position: absolute;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+}
+
+.card-title ion-icon {
+    font-size: 20px;
+    margin-left: 10px;
+}
 
 /* Responsividade */
+
+/* Responsividade */
+@media(max-width: 1500px) {
+    .card-Conta-User {
+        width: 480px;
+    }
+}
+
+@media(max-width: 1380px) {
+    .card-Conta-User {
+        width: 400px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .card-Conta-User {
+        width: 350px;
+    }
+}
+
+@media(max-width: 1100px) {
+    .card-Conta-User {
+        width: 300px;
+    }
+}
 
 @media (max-width: 991px) {
     .formularioPerfil {
         left: -300px;
     }
+
     .navigation.active {
         width: 300px;
         left: 0;
     }
-    .main{
+
+    .main {
         width: 100%;
         left: 0;
     }
+
     .main.active {
         left: 300px;
     }
-    .cardBox{
-        grid-template-columns: repeat(2,1fr);
+
+    .cardBox {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 680px) {
+    .AdicionarConta p {
+        display: none;
+    }
 
+    .cardOpcoesUsuario {
+        width: 300px;
+        height: 70px;
+    }
+
+    .card-Conta-User {
+        width: 260px;
+    }
+}
+
+@media (max-width: 610px) {
+    .cardOpcoesUsuario {
+        width: 60px;
+        height: 58px;
+        border-radius: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-title h2 {
+        display: none;
+    }
+
+    .card-title ion-icon {
+        margin-left: 0px;
+    }
+
+    .card-Conta-User {
+        width: 100%;
+    }
+
+    .listar-contas {
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .listar-contas {
+        display: block;
+    }
+
+}

@@ -507,6 +507,46 @@ body {
 
 /* Responsividade */
 
+@media(max-width: 1880px){
+    .cardFoto {
+        grid-template-columns: 100px 270px 85px;
+    }
+}
+
+@media(max-width: 1340px){
+    .alinhaCards {
+        display: block;
+    }
+
+    .tabsCards{
+        display: flex;
+        gap: 15px;
+    }
+
+    .cardOpcoesUsuario {
+        border-radius: 20px;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+        width: 308px;
+        padding: 20px 25px;
+        height: 100px;
+        margin-top: 10px;
+    }
+}
+
+@media(max-width: 1240px){
+    .cardOpcoesUsuario p{
+        display: none;
+    }
+
+    .cardOpcoesUsuario {
+        width: 299px;
+        /* padding: 20px 25px; */
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+}
+
 @media (max-width: 991px) {
     .formularioPerfil {
         left: -300px;
@@ -525,4 +565,42 @@ body {
     .cardBox{
         grid-template-columns: repeat(2,1fr);
     }
+}
+
+@media (max-width: 610px) {
+    .cardOpcoesUsuario {
+        width: 60px;
+        height: 58px;
+        border-radius: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .titleOpcoesUser h3{
+        display: none;
+    }
+
+    .inputForms {
+        display: block;
+    }
+
+    .cardFoto {
+        border-radius: 20px;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+        padding: 8px 16px;
+        margin-top: 10px;
+    }
+
+    .cardFoto {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mobileFoto input{
+        width: 16rem;
+    }    
 }

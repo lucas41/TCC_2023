@@ -18,13 +18,14 @@
         <div class="details">
             <div class="moviementacoesRecentes">
                 <div class="cardHeader">
-                    <h2>Movimentações</h2>
+                    <h2>Relatórios</h2>
                 </div>
                 <table>
                     <thead>
                         <tr>
                             <td>Mês</td>
                             <td>Ano</td>
+                            <td>Conta Bancaria</td>
                             <td>Saldo FInal</td>
                             <td>Saldo Entrada</td>
                             <td>Saldo Saida</td>
@@ -35,6 +36,12 @@
                             <tr>
                                 <td> {{$relatorio->mes}} </td>
                                 <td>{{$relatorio->ano}}</td>
+                                @php
+                                $conta_bancaria = App\Models\ContaBancaria::find($relatorio->conta_id);
+                                @endphp
+                                <td>@php echo $conta_bancaria->Nome_Conta ?? 'Conta não encontrada'; @endphp</td>
+                                @php
+                                @endphp
                                 <td>{{$relatorio->saldo}}</td>
                                 <td>{{$relatorio->entrada}}</td>
                                 <td>{{$relatorio->saida}}</td>   

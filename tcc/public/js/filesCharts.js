@@ -3,9 +3,9 @@ const second = document.getElementById('anual');
 const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 
-
 const nome = centrocusto.map(item => item.Nome);
 const valor = centrocusto.map(item => item.valplanejado);
+const valorgasto = centrocusto.map(item => item.valatual);
 
 new Chart(first, {
   type: 'doughnut',
@@ -15,9 +15,6 @@ new Chart(first, {
       label: 'Entradas e Saidas do Mes',
       data: valor,
       backgroundColor:[
-        /*'rgba(0, 128, 0, 1)',
-        'rgba(255, 0, 0, 1)',
-        'rgba(0, 0, 255 , 1)',*/
         'rgba(255, 99, 132, 1)',
         'rgba(255, 159, 64, 1)',
         'rgba(255, 205, 86, 1)',
@@ -38,8 +35,43 @@ new Chart(first, {
   }
 });
 
+const mixedChart = new Chart(second, {
+  data: {
+    datasets: [{
+      type: 'line',
+      label: 'Valor Programado',
+      data: valor,
+      showLine: false,
+      borderColor: 'rgb(0, 0, 0)',
+      backgroundColor: 'rgb(0, 0, 0)',
+      borderWidth: 5,
+    }, {
+      type: 'bar',
+      label: 'Valor Gasto',
+      data: valorgasto,
+      backgroundColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 205, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 205, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(153, 102, 255, 1)'
+      ]
+    }],
+    labels: nome
+},
+options: {
+  responsive: true,
+}
+});
 
-  const mixedChart = new Chart(second, {
+  /*const mixedChart = new Chart(second, {
     data: {
         datasets: [{
           type: 'line',
@@ -70,4 +102,4 @@ new Chart(first, {
     options: {
       responsive: true,
     }
-});
+});*/

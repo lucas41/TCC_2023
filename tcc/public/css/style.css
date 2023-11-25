@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 /* Modificações gerais e font*/
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,7 +10,7 @@
 }
 
 /* Ajustes da classe container */
-.global{
+.global {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -20,7 +20,7 @@
 }
 
 /* Ajustes da classe forms gerais */
-.form{
+.form {
     max-width: 430px;
     width: 100%;
     padding: 30px;
@@ -29,7 +29,7 @@
 }
 
 /* Ajustes da tag header */
-header{
+header {
     font-size: 28px;
     font-weight: 600;
     color: #232836;
@@ -37,12 +37,12 @@ header{
 }
 
 /* Ajustes da tag form */
-form{
+form {
     margin-top: 30px;
 }
 
 /* Ajustes da classe field na tag form */
-form .field{
+form .field {
     position: relative;
     height: 50px;
     width: 100%;
@@ -51,7 +51,7 @@ form .field{
 
 /* Ajustes da classe field */
 .field input,
-.field button{
+.field button {
     height: 100%;
     width: 100%;
     border: none;
@@ -61,13 +61,13 @@ form .field{
 }
 
 /* Ajustes da classe field */
-.field input{
+.field input {
     padding: 0 15px;
     border: 1px solid#CACACA;
 }
 
 /* Definindo posição icone de olho */
-.eye-icon{
+.eye-icon {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -79,27 +79,27 @@ form .field{
 }
 
 /* Ajustes da classe de link */
-.form-link{
+.form-link {
     text-align: center;
     margin-top: 10px;
 }
 
 /* Ajustes da classe de texto e link */
 .form-link span,
-.form-link a{
+.form-link a {
     font-size: 14px;
     font-weight: 400;
     color: #232836;
 }
 
 /* Ajustes da classe a (link) */
-.form a{
+.form a {
     color: #0171d3;
     text-decoration: none;
 }
 
 /* Ajustes de link para quando passar o mouse */
-.form a:hover{
+.form a:hover {
     text-decoration: underline;
 }
 
@@ -115,7 +115,7 @@ form .field{
     background-color: #4caf50;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
 }
 
@@ -131,11 +131,11 @@ form .field{
     background-color: #FF0000;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
 }
 
-.Header-site{
+.Header-site {
     background-image: url(../img/2.jpg);
     background-position: center top;
     background-repeat: no-repeat;
@@ -146,12 +146,12 @@ form .field{
     padding-bottom: 300px;
 }
 
-.content-site{
+.content-site {
     padding-top: 100px;
     padding-bottom: 200px;
 }
 
-.img-site{
+.img-site {
     background-image: url(../img/1.jpg);
     background-position: center top;
     background-repeat: no-repeat;
@@ -162,10 +162,31 @@ form .field{
     padding-bottom: 300px;
 }
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
 
-.footer-site{
-    background-color: #333333;
-    color: #ffffff;
-    padding-top: 25px;
-    padding-bottom: 25px;
+.navbar-brand ion-icon {
+    font-size: 34px;
+    margin-right: 5px;
+}
+
+.navbar-brand .title {
+    font-size: 18px;
+    margin-top: 2px; /* Ajuste para alinhar verticalmente com o ícone */
+}
+
+/* Estilizando os links de login e registro quando passa o mouse */
+.navbar-buttons .btn {
+    background-color: #fff; /* Cor desejada ao passar o mouse (azul) */
+    border-color: #fff;
+    color: #000; /* Cor do texto ao passar o mouse (branco) */
+    border-radius: 10px;
+}
+
+.navbar-buttons .btn:hover {
+    background-color: #007bff; /* Cor desejada ao passar o mouse (azul) */
+    border-color: #007bff;
+    color: #fff; /* Cor do texto ao passar o mouse (branco) */
 }

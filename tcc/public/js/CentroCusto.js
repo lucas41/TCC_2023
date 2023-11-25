@@ -16,3 +16,6 @@ function toggleDropdown(dotsElement) {
     var dropdownContent = dotsElement.nextElementSibling;
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 }
+
+
+

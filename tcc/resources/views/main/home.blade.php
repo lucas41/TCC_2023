@@ -14,13 +14,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <script>
-         var centrocusto = <?php echo json_encode($centrocusto); ?>;
+        var centrocusto = <?php echo json_encode($centrocusto); ?>;
     </script>
 </head>
-
 <body>
-
-
     <div class="container">
         @include('partials.navbar')
         <!-- Card box -->
@@ -28,8 +25,8 @@
             <div class="cardPositive">
                 <div>
                     @if (session('id_conta_selecionada') == null)
-                    <div class="numbers">R$ 0</div>
-                    <div class="cardName">Sem conta selecionada</div>
+                        <div class="numbers">R$ 0</div>
+                        <div class="cardName">Sem conta selecionada</div>
                     @else
                         <div class="numbers">R$ {{ $conta->entrada }}</div>
                         <div class="cardName">Entradas na conta {{ $conta->Nome_Conta }}</div>
@@ -56,8 +53,8 @@
             <div class="cardNegative">
                 <div class=>
                     @if (session('id_conta_selecionada') == null)
-                    <div class="numbers"> R$ 0</div>
-                    <div class="cardName">Sem conta selecionada</div>
+                        <div class="numbers"> R$ 0</div>
+                        <div class="cardName">Sem conta selecionada</div>
                     @else
                         <div class="numbers">R$ {{ $conta->saida }}</div>
                         <div class="cardName">Saidas na conta {{ $conta->Nome_Conta }}</div>
@@ -68,7 +65,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Graficos -->
         <div class="graphBox">
             <div class="box">
@@ -84,32 +80,48 @@
             <div class="moviementacoesRecentes">
                 <div class="cardHeader">
                     <h2>Movimentações Recentes</h2>
-                    <a href="#" class="btn">Ver tudo</a>
+                    <a href="{{ route('CadastroLancamento') }}" class="btn">Ver tudo</a>
                 </div>
                 @if (session('id_conta_selecionada') == null)
-                <br>
-                <h2> não há lançamentos cadastrados </h2>
+                    <br>
+                    <h2> Não há lançamentos cadastrados </h2>
                 @else
-                <table>     
-                    <thead>
-                        <tr>
-                            <td>Nome</td>
-                            <td>Valor</td>
-                            <td>Data</td>
-                            <td>Entrada/Saída</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($lancamentos as $lancamento)   
-                        <tr>
-                            <td>{{$lancamento->Nome}}</td>
-                            <td>{{$lancamento->valor}}</td>
-                            <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
-                            <td><span class="statusEntrada">{{$lancamento->Tipo}}</span></td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Nome</td>
+                                <td>Valor</td>
+                                <td>Data</td>
+                                <td> Centro </td>
+                                <td>Entrada/Saída</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($lancamentos->sortByDesc('created_at')->take(5) as $lancamento)
+                                <tr>
+                                    <td>{{ $lancamento->Nome }}</td>
+                                    <td>R$ {{ $lancamento->valor }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($lancamento->created_at)) }}</td>
+                                    @if ($lancamento->centro_custo_id == null)
+                                        <td> Entrada </td>
+                                    @else
+                                        <td>
+                                            {{ $lancamento->centroCusto->Nome }}
+                                        </td>
+                                    @endif
+                                    <td>
+                                        @if ($lancamento->Tipo == 1)
+                                            <span class="statusEntrada">Entrada</span>
+                                            <span class="icon-entrada"> + </<span>
+                                        @else
+                                            <span class="statusSaida">Saída</span>
+                                            <span class="icon-saida"> - </span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 @endif
             </div>
         </div>
@@ -141,9 +153,6 @@
 
         list.forEach((item) =>
             item.addEventListener('mouseover', activeLink));
-
-        
-    
     </script>
     <script src="{{ asset('js/filesCharts.js') }}"></script>
 </body>

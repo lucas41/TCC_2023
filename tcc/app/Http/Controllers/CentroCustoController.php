@@ -34,4 +34,36 @@ class CentroCustoController extends Controller
 
     }
 
+    public function apagaCentroid($id)
+    {
+        $Centrocusto = CentroCusto::where('id', $id)->first();
+       
+        try {
+            //$Centrocusto->lancamentoContabil()->dissociate();
+            $Centrocusto->lancamentoContabil()->update(['centro_custo_id' => null, 'Tipo' => 3]);
+            $Centrocusto->delete();
+            return redirect()->route('CentroCusto')->with('success', 'Centro de custo apagada com sucesso');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('danger', '' . $e->getMessage());
+        }
+
+    }
+
+    public function edit($id)
+    {
+        $Centrocusto = CentroCusto::find($id);
+        return view('CentroCusto.edit', compact('Centrocusto'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $Centrocusto = CentroCusto::find($id);
+        $Centrocusto->Nome = $request->input('Nome');
+        $Centrocusto->valplanejado = $request->input('valplanejado');
+        $Centrocusto->save();
+
+        return redirect()->route('CentroCusto'); // redirecione para onde desejar após a edição
+    }
+
 }
