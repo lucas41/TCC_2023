@@ -99,6 +99,8 @@ body {
     font-size: 1.75em;
 }
 
+
+
 .navigation ul li a .title {
     position: relative;
     display: block;
@@ -350,6 +352,22 @@ body {
 .cardOpcoesUsuario p {
     font-size: 15px;
     color: #6c6868;
+}
+
+.cardOpcoesUsuario .config-icon{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.titleOpcoesUser{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 12px;
+}
+
+.titleOpcoesUser ion-icon{
+    color: #909090;
 }
 
 .alinhaCards .cardOpcoesUsuario:hover {
