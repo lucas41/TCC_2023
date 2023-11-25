@@ -36,9 +36,9 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-xs-12">
-                    <h1 class=text-center> Bem vindo </h1>
+                    <h1 class=text-center> Bem vindo ao nosso site de controle financeiro!</h1>
                     <p class="lead text-center">
-                    <h4>ao nosso site de controle financeiro! Otimize suas finanças com centro de custos personalizados para alcançar seus objetivos com facilidade.</h4>
+                    <h4> Otimize suas finanças com centro de custos personalizados para alcançar seus objetivos com facilidade.</h4>
                     </p>
                     <br>
                     <a href="{{ route('registro') }}" class=" btn btn-success"> Venha conferir </a>
@@ -101,8 +101,6 @@
                 <div class="col-xs-12">
                     <p class="lead text-center"> Obrigado por escolher nosso site para aprimorar sua gestão financeira. Estamos aqui para apoiar seus objetivos e proporcionar uma jornada tranquila rumo ao sucesso financeiro. Conte conosco para fornecer as ferramentas necessárias que o ajudarão a prosperar.
                     </p>
-                    <!--<button type="button" class="btn btn-success" style="width: 200px; border: 10%;"> Acesso
-                    </button>-->
                 </div>
             </div>
         </div>
