@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\ContaBancaria;
 use App\Mail\CodigoReset;
+use App\Mail\Delete;
 use Illuminate\Support\Facades\Mail;
 
 class ConfiguracaoController extends Controller
@@ -115,7 +116,7 @@ class ConfiguracaoController extends Controller
         $conjuntoAleatorio = $this->gerarConjuntoAleatorio(6);
         $user->reset_code = $conjuntoAleatorio;
         $user->save();
-        Mail::to($user->email)->send(new CodigoReset($conjuntoAleatorio));
+        Mail::to($user->email)->send(new Delete($conjuntoAleatorio));
         return redirect()->route('deletar');
     }
 
