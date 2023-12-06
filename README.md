@@ -12,12 +12,12 @@
 <h6> Imagens dos resultados obtidos </h6>
 
 
-<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print1.png" width="500" height="600">
-<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print2.png" width="500" height="600">
+<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print1.png" width="1000" height="600">
+<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print2.png" width="1000" height="600">
 
-<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print3.png" width="500" height="600">
+<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print3.png" width="1000" height="600">
 
-<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print4.png" width="500" height="600">
+<img src="https://github.com/lucas41/TCC_2023/blob/main/prints/print4.png" width="1000" height="600">
 
 
 
