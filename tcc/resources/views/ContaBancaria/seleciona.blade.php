@@ -64,7 +64,7 @@
                         </div>
                         <div class="inputForms">
                             <div class="inputGroup">
-                                <input type="number" name="saldo" required="" autocomplete="off">
+                                <input type="text" name="saldo" required="" autocomplete="off">
                                 <label for="name">Saldo Atual</label>
                             </div>
                         </div>

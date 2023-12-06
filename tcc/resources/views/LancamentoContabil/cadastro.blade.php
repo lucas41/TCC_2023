@@ -46,7 +46,7 @@
                         <br>
                         <div class="inputForms">
                             <div class="inputGroup">
-                                <input type="number" name="valor" required="" autocomplete="off">
+                                <input type="text" name="valor" required="" autocomplete="off">
                                 <label for="name">Valor</label>
                             </div>
                         </div>
